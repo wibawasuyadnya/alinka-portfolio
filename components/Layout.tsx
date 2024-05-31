@@ -1,3 +1,5 @@
+"use client";
+
 import React, { Fragment, ReactNode } from "react";
 import Header from "./Layout-components/Header";
 
@@ -8,9 +10,7 @@ export default function Layout({ children }: LayoutType) {
   return (
     <Fragment>
       <Header />
-      <main>
-        {children}
-      </main>
+      <main>{children}</main>
     </Fragment>
   );
 }

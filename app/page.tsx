@@ -1,12 +1,11 @@
 import Layout from "@/components/Layout";
+import Hero from "@/components/section/Hero";
 
 export default function Home() {
   return (
     <main>
       <Layout>
-        <div className="w-full h-screen flex flex-col justify-center items-center">
-          <h2>Welcome Section</h2>
-        </div>
+        <Hero />
       </Layout>
     </main>
   );
