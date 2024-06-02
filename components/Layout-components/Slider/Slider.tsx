@@ -28,8 +28,8 @@ export default function Slider({ data }: SliderItemType) {
         pagination={{
           el: ".swiper-pagination",
           clickable: true,
-        //   bulletClass: "swiper-custom-bullet",
-        //   bulletActiveClass: "swiper-custom-bullet-active",
+          //   bulletClass: "swiper-custom-bullet",
+          //   bulletActiveClass: "swiper-custom-bullet-active",
         }}
         loop={true}
         grabCursor={true}

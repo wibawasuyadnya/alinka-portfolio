@@ -26,8 +26,19 @@ export default function HeroBanner() {
   };
 
   useEffect(() => {
-    getSliderList();
+    if (!data) {
+      getSliderList();
+    }
   }, []);
 
-  return <Fragment>{data && <Slider data={data.sliders} />}</Fragment>;
+  return (
+    <Fragment>
+      {data && <Slider data={data.sliders} />}
+      <div className="text-base-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 font-playfair tracking-wide h-fit w-fit">
+        <div className="text-center bg-base-100 bg-opacity-50 p-4 rounded">
+          <h1 className="text-2xl font-bold">Alinka's Art Gallery</h1>
+        </div>
+      </div>
+    </Fragment>
+  );
 }

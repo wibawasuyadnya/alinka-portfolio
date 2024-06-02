@@ -13,7 +13,7 @@ interface HeaderType {
 const StickyHeader = ({ show }: { show?: boolean }) => {
   return (
     <motion.div
-      className={`top-0 navbar sticky z-10 text-white ${
+      className={`top-0 navbar sticky z-10 text-base-200 ${
         show ? "block" : "hidden"
       }`}
       initial={{ y: "-200%" }}
@@ -25,9 +25,7 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
           " mx-auto mt-1 rounded-2xl bg-primary w-5/6 grid grid-cols-5 gap-4 place-items-center p-5 shadow-xl shadow-[rgba(0,0,0,0.18)]"
         }
       >
-        <div className="prose">
-          <h3 className="font-semibold text-xl'">Alinka's Art Gallery</h3>
-        </div>
+        <h3 className="font-semibold text-xl'">Alinka's Art Gallery</h3>
         <nav className="col-span-3 flex flex-row gap-5 font-medium">
           <a href="#about">About</a>
           <a href="#work">Work</a>
@@ -43,12 +41,12 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
 
 const StaticHeader = () => {
   return (
-    <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-white">
-      <div
-        className={"w-full grid grid-cols-5 gap-5 place-items-center p-5 prone"}
-      >
-        <div className="prose">
-          <h3 className="text-white font-semibold font-playfair text-4xl tracking-wide">Alinka</h3>
+    <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-base-200">
+      <div className={"w-full grid grid-cols-5 gap-5 place-items-center p-5"}>
+        <div className="text-base-200">
+          <h3 className="font-semibold font-playfair text-4xl tracking-wide">
+            Alinka
+          </h3>
         </div>
         <nav className={"col-span-3 flex flex-row gap-10 font-medium text-lg"}>
           <a href="#about">About</a>
