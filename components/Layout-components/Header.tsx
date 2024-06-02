@@ -25,7 +25,9 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
           " mx-auto mt-1 rounded-2xl bg-primary w-5/6 grid grid-cols-5 gap-4 place-items-center p-5 shadow-xl shadow-[rgba(0,0,0,0.18)]"
         }
       >
-        <h3 className="font-semibold text-xl'">Alinka's Art Gallery</h3>
+        <div className="prose">
+          <h3 className="font-semibold text-xl'">Alinka's Art Gallery</h3>
+        </div>
         <nav className="col-span-3 flex flex-row gap-5 font-medium">
           <a href="#about">About</a>
           <a href="#work">Work</a>
@@ -41,10 +43,14 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
 
 const StaticHeader = () => {
   return (
-    <div className="absolute bg-transparent w-full">
-      <div className={"w-full grid grid-cols-5 gap-4 place-items-center p-5"}>
-        <h3>Alinka</h3>
-        <nav className={"col-span-3 flex flex-row gap-5"}>
+    <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-white">
+      <div
+        className={"w-full grid grid-cols-5 gap-5 place-items-center p-5 prone"}
+      >
+        <div className="prose">
+          <h3 className="text-white font-semibold font-playfair text-4xl tracking-wide">Alinka</h3>
+        </div>
+        <nav className={"col-span-3 flex flex-row gap-10 font-medium text-lg"}>
           <a href="#about">About</a>
           <a href="#work">Work</a>
           <a href="#contact">Contact</a>
@@ -93,9 +99,7 @@ export default function Header({ title, description }: HeaderType) {
       </Head>
       {/* sticky header hide & show */}
       <StickyHeader show={showStickyHeader} />
-      <header>
-        <StaticHeader />
-      </header>
+      <StaticHeader />
     </Fragment>
   );
 }

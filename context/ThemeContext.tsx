@@ -14,7 +14,6 @@ const defaultValue: ThemeContextType = {
   theme: "light",
   changeTheme: () => {},
 };
-
 export const ThemeContext = createContext<ThemeContextType>(defaultValue);
 
 export const ThemeProvider = ({ children }: ThemeProviderType) => {
@@ -28,9 +27,7 @@ export const ThemeProvider = ({ children }: ThemeProviderType) => {
     setTheme(storedTheme);
   }, []);
 
-  if (!mounted) {
-    return <span>loading...</span>;
-  }
+  if (!mounted) return null;
 
   const changeTheme = (theme: string) => {
     setTheme(theme);

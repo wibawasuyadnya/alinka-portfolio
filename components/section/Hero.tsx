@@ -1,12 +1,13 @@
 import React, { Fragment } from "react";
+import HeroBanner from "./Hero-components/HeroBanner";
 
 export default function Hero() {
   return (
-    <Fragment>
+    <div className="flex flex-col justify-center items-center min-w-full min-h-[400px]">
       {/* Hero Section */}
-      <div className="prose bg-blue-600 max-w-full h-[5000px] flex flex-col justify-center items-center">
-        <h1 className="text-center">Alinka Harun Artist</h1>
+      <div className="w-full h-full">
+        <HeroBanner />
       </div>
-    </Fragment>
+    </div>
   );
 }

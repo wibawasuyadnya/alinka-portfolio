@@ -1,8 +1,9 @@
 import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
-import "./globals.css";
+import "@/styles/globals.css";
 import { ThemeProvider } from "@/context/ThemeContext";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
+import { Providers } from "@/redux/provider";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
 
@@ -19,11 +20,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={public_sans.className}>
+      <Providers>
         <ThemeProvider>
           <ClientThemeWrapper>
-            <div>{children}</div>
+            {children}
           </ClientThemeWrapper>
         </ThemeProvider>
+        </Providers>
       </body>
     </html>
   );

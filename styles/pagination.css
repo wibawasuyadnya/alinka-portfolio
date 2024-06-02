@@ -1,0 +1,20 @@
+/*
+** Custom Style for pagination
+*/
+
+/* Pagination active */
+div > span.swiper-pagination-bullet-active  {
+    background-color: white !important;
+    width: 40px;
+    border-radius: 1px;
+    height: 4px;
+    opacity: 0.7;
+}
+
+/* Pagination active */
+div > span.swiper-pagination-bullet  {
+    background-color: #CACACA;
+    width: 40px;
+    border-radius: 1px;
+    height: 4px;
+}

@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variable Fonts */
+@supports (font-variation-settings: normal) {
+  @font-face {
+    font-family: "Playfair_Display";
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/assets/fonts/Playfair_Display/PlayfairDisplay-VariableFont_wght.ttf")
+      format("woff2");
+    font-named-instance: "Regular";
+  }
+
+  @font-face {
+    font-family: "Playfair_Display";
+    font-style: italic;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url("/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght")
+      format("woff2");
+    font-named-instance: "Italic";
+  }
+}
+
+/* Static Fonts */
+@supports not (font-variation-settings: normal) {
+  @font-face {
+    font-named-instance: Regular;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: normal;
+    font-weight: 400;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-Regular.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: Medium;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: normal;
+    font-weight: 500;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-Medium.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: MediumItalic;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: italic;
+    font-weight: 500;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-MediumItalic.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: Italic;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: italic;
+    font-weight: 100 900;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-Italic.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: SemiBold;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: semibold;
+    font-weight: 600;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-SemiBold.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: SemiBoldItalic;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: italic;
+    font-weight: 600;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-SemiBoldItalic.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: Bold;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: bold;
+    font-weight: 700;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-Bold.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: BoldItalic;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: italic;
+    font-weight: 700;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-BoldItalic.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: Black;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: black;
+    font-weight: 800;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-Black.ttf")
+      format("woff2");
+  }
+
+  @font-face {
+    font-named-instance: BlackItalic;
+    font-display: swap;
+    font-family: Playfair_Display;
+    font-style: italic;
+    font-weight: 800;
+    src: url("/assets/fonts/Playfair_Display/static/Playfair_Display-BlackItalic.ttf")
+      format("woff2");
+  }
+}
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-start-rgb: 0, 0, 0;
+    --background-end-rgb: 0, 0, 0;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: linear-gradient(
+      to bottom,
+      transparent,
+      rgb(var(--background-end-rgb))
+    )
+    rgb(var(--background-start-rgb));
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}

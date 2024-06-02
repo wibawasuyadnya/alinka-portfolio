@@ -1,13 +1,19 @@
 import type { Config } from "tailwindcss";
 
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 const config: Config = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
     "./components/**/*.{js,ts,jsx,tsx,mdx}",
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./context/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
+      fontFamily: {
+        'playfair': ['Playfair_Display', ...defaultTheme.fontFamily.serif],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
@@ -28,8 +34,8 @@ const config: Config = {
           "accent-content": "#150400",
           "neutral": "#260b19",
           "neutral-content": "#d0c8cb",
-          "base-100": "#fffff8",
-          "base-200": "#deded8",
+          "base-100": "#fbfbfb",
+          "base-200": "#fffff8",
           "base-300": "#bebeb8",
           "base-content": "#161615",
           "info": "#00a5c5",

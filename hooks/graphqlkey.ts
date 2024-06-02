@@ -1,0 +1,1 @@
+export const gqlKey = `${process.env.NEXT_PUBLIC_API_CONTENT_KEY}`
