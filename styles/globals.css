@@ -152,6 +152,14 @@ body {
     rgb(var(--background-start-rgb));
 }
 
+/* .backdrop-opacity {
+  backdrop-filter: opacity(0.5);
+} */
+
+.backdrop-blur {
+  backdrop-filter: blur(1px);
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
