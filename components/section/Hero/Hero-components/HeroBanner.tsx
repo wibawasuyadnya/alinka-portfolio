@@ -6,6 +6,7 @@ import { HeroDataType, SliderListType } from "@/types/type";
 import { setLoading } from "@/redux/slices/globalSlice";
 import { useAppDispatch } from "@/redux/hook";
 import Image from "next/image";
+import Typewriter from "@/components/Layout-components/Typewriter";
 
 export default function HeroBanner({
   content,
@@ -36,11 +37,11 @@ export default function HeroBanner({
   return (
     <Fragment>
       {data && <Slider data={data} />}
-      <div className="text-base-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 font-playfair tracking-wide h-fit w-fit">
+      <div className="text-base-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 font-playfair tracking-wide h-fit w-2/5">
         <div className="relative">
           <div className="space-y-3 text-center backdrop-opacity-20 backdrop-blur backdrop-invert bg-base-100/40 p-4 rounded">
             <h1 className="text-2xl font-bold">{content?.heading}</h1>
-            <p className="text-lg font-medium">{content?.description}</p>
+            <Typewriter data={content?.description} delay={1} />
           </div>
           <Image
             className="absolute top-[-25px] right-[-30px] xs:hidden"

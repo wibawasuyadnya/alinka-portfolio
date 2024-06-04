@@ -1,3 +1,4 @@
+"use client"
 // src/hooks/useSectionContent.ts
 import { useState, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hook";

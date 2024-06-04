@@ -25,7 +25,7 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
           " mx-auto mt-1 rounded-2xl bg-primary w-5/6 grid grid-cols-5 gap-4 place-items-center p-5 shadow-xl shadow-[rgba(0,0,0,0.18)]"
         }
       >
-        <h3 className="font-semibold text-xl'">Alinka's Art Gallery</h3>
+        <h3 className="font-semibold text-xl'">Alinka&apos;s Art Gallery</h3>
         <nav className="col-span-3 flex flex-row gap-5 font-medium">
           <a href="#about">About</a>
           <a href="#work">Work</a>

@@ -1,6 +1,6 @@
 import React, { Fragment } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { EffectFade, Pagination } from "swiper/modules";
+import { Autoplay, EffectFade, Pagination } from "swiper/modules";
 import Image from "next/image";
 // styles modules
 import "swiper/css";
@@ -20,22 +20,28 @@ interface SliderItemType {
 }
 
 export default function Slider({ data }: SliderItemType) {
+  const activeBulletClass = `swiper-pagination-bullet-active bg-border-200`;
+  const bulletClass = `swiper-pagination-bullet bg-border-200`;
   return (
     <Fragment>
       <Swiper
-        modules={[EffectFade, Pagination]}
+        modules={[EffectFade, Pagination, Autoplay]}
         centeredSlides={true}
         pagination={{
           el: ".swiper-pagination",
           clickable: true,
-          //   bulletClass: "swiper-custom-bullet",
-          //   bulletActiveClass: "swiper-custom-bullet-active",
+          bulletClass,
+          bulletActiveClass: activeBulletClass,
         }}
         loop={true}
         grabCursor={true}
         effect={"fade"}
         direction="horizontal"
         slidesPerView={1}
+        autoplay={{
+          delay: 6000,
+          disableOnInteraction: false,
+        }}
         spaceBetween={1}
       >
         {data && data.length > 0

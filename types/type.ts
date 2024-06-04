@@ -33,9 +33,19 @@ export type HeroDataType = {
 
 // hero section data array types 
 export type HeroPropsType = {
-    data: HeroDataType | HeroDataType[];
-  };
+    data: HeroDataType[];
+};
+
+
+// quotation section data types
+
+export type QuotationDataType = {
+    heading: string
+    description: string;
+    wysiwygEditor: WysiwygEditorType;
+};
+
 // Loading data types
 export type LoadingType = {
     loading: boolean;
-}
+};
