@@ -18,7 +18,7 @@ function Quotation() {
   console.log(quoteData?.wysiwygEditor.html);
 
   return (
-    <div className="flex flex-col justify-center items-center max-w-full min-h-[800px]">
+    <div className="flex flex-col justify-center items-center max-w-full h-fit pt-20 pb-20">
       {/* Hero Section */}
       {quoteData && HtmlContent(quoteData.wysiwygEditor)}
     </div>

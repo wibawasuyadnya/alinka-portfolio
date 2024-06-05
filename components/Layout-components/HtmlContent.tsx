@@ -1,5 +1,4 @@
 // components/HtmlContent.tsx
-
 import React from "react";
 import parse, {
   domToReact,
@@ -19,9 +18,7 @@ const options: HTMLReactParserOptions = {
       return (
         <a
           href={attribs.href}
-          className=" px-5 py-3 text-base bg-primary text-white rounded-xl" // Apply your custom class
-          target="_blank"
-          rel="noopener noreferrer"
+          className=" px-5 py-3 text-base bg-primary text-white rounded-md z-10" 
         >
           {domToReact(children as DOMNode[], options)}
         </a>
@@ -35,14 +32,14 @@ const options: HTMLReactParserOptions = {
         </em>
       );
     }
-    if ((domNode as Element).name === "strong") {
-        const { children } = domNode as Element;
-        return (
-          <em className="text-2xl font-semibold">
-            {domToReact(children as DOMNode[], options)}
-          </em>
-        );
-      }
+    if ((domNode as Element).name === "p") {
+      const { children } = domNode as Element;
+      return (
+        <em className="text-2xl">
+          {domToReact(children as DOMNode[], options)}
+        </em>
+      );
+    }
   },
 };
 

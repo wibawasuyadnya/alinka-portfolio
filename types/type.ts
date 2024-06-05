@@ -36,6 +36,7 @@ export type HeroPropsType = {
     data: HeroDataType[];
 };
 
+// leg code atulaus
 
 // quotation section data types
 

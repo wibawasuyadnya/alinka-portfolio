@@ -13,7 +13,7 @@ interface HeaderType {
 const StickyHeader = ({ show }: { show?: boolean }) => {
   return (
     <motion.div
-      className={`top-0 navbar sticky z-10 text-base-200 ${
+      className={`top-0 navbar sticky z-10 text-white ${
         show ? "block" : "hidden"
       }`}
       initial={{ y: "-200%" }}
@@ -67,7 +67,7 @@ export default function Header({ title, description }: HeaderType) {
 
   const handleScroll = () => {
     const currentScrollY = window.scrollY;
-    if (currentScrollY > 600) {
+    if (currentScrollY > 500) {
       setShowStickyHeader(currentScrollY > lastScrollY);
     } else {
       setShowStickyHeader(false);
