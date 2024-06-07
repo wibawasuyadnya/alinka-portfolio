@@ -27,7 +27,7 @@ const config: Config = {
       {
         'light': {
           "primary": "#6200ff",
-          "primary-content": "#d9daff",
+          "primary-content": "#000000",
           "secondary": "#0072ff",
           "secondary-content": "#000416",
           "accent": "#f96a00",
@@ -36,7 +36,7 @@ const config: Config = {
           "neutral-content": "#d0c8cb",
           "base-100": "#fbfbfb",
           "base-200": "#000000",
-          "base-300": "#faf5ff",
+          "base-300": "#fdfbff",
           "base-content": "#161615",
           "info": "#00a5c5",
           "info-content": "#000a0e",
@@ -51,7 +51,7 @@ const config: Config = {
       {
         'dark': {
           "primary": "#7f00ff",
-          "primary-content": "#e1d9ff",
+          "primary-content": "#ffffff",
           "secondary": "#0083ff",
           "secondary-content": "#000616",
           "accent": "#00a236",
@@ -60,7 +60,7 @@ const config: Config = {
           "neutral-content": "#c9c6c4",
           "base-100": "#202237",
           "base-200": "#ffffff",
-          "base-300": "#071919",
+          "base-300": "#262840",
           "base-content": "#cad0d3",
           "info": "#0093ff",
           "info-content": "#000816",
