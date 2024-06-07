@@ -13,11 +13,9 @@ interface HeaderType {
 const StickyHeader = ({ show }: { show?: boolean }) => {
   return (
     <motion.div
-      className={`top-0 navbar sticky z-10 text-white ${
-        show ? "block" : "hidden"
-      }`}
-      initial={{ y: "-200%" }}
-      animate={{ y: show ? `0` : "-200%" }}
+      className={`top-0 navbar sticky z-50 text-white h-fit mt-[-100px]`}
+      initial={{ y: "-200px" }}
+      animate={{ y: show ? `0` : "-200px" }}
       transition={{ type: "spring", stiffness: 100 }}
     >
       <div

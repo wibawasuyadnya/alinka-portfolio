@@ -1,52 +1,19 @@
 // components/HtmlContent.tsx
-import React from "react";
-import parse, {
-  domToReact,
-  HTMLReactParserOptions,
-  Element,
-  DOMNode,
-} from "html-react-parser";
+import React, { ReactNode } from "react";
+import useStyledHtmlParser from "@/hooks/useStyledHtmlParser";
+import { TargetElement } from "@/types/type";
 
 interface HtmlContentProps {
   html: string;
+  targets: TargetElement[];
 }
 
-const options: HTMLReactParserOptions = {
-  replace: (domNode: DOMNode) => {
-    if ((domNode as Element).name === "a") {
-      const { attribs, children } = domNode as Element;
-      return (
-        <a
-          href={attribs.href}
-          className=" px-5 py-3 text-base bg-primary text-white rounded-md z-10" 
-        >
-          {domToReact(children as DOMNode[], options)}
-        </a>
-      );
-    }
-    if ((domNode as Element).name === "em") {
-      const { children } = domNode as Element;
-      return (
-        <em className="text-3xl font-medium">
-          {domToReact(children as DOMNode[], options)}
-        </em>
-      );
-    }
-    if ((domNode as Element).name === "p") {
-      const { children } = domNode as Element;
-      return (
-        <em className="text-2xl">
-          {domToReact(children as DOMNode[], options)}
-        </em>
-      );
-    }
-  },
-};
+const HtmlContent = ({ html, targets }: HtmlContentProps) => {
+  const content = useStyledHtmlParser(html, targets);
 
-const HtmlContent = ({ html }: HtmlContentProps) => {
   return (
     <div className="flex flex-col justify-center items-center gap-8">
-      {parse(html, options)}
+      {content}
     </div>
   );
 };

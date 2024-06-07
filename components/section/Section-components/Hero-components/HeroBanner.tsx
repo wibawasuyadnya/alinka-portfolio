@@ -2,7 +2,7 @@
 import React, { useState, useEffect, Fragment } from "react";
 import Slider from "@/components/Layout-components/Slider/Slider";
 import { getSliderRequest } from "@/app/api/_get/route";
-import { HeroDataType, SliderListType } from "@/types/type";
+import { DefaultPageDataType, SliderListType } from "@/types/type";
 import { setLoading } from "@/redux/slices/globalSlice";
 import { useAppDispatch } from "@/redux/hook";
 import Image from "next/image";
@@ -11,7 +11,7 @@ import Typewriter from "@/components/Layout-components/Typewriter";
 export default function HeroBanner({
   content,
 }: {
-  content: HeroDataType | null;
+  content: DefaultPageDataType | null;
 }) {
   const [data, setData] = useState<SliderListType | null>(null);
   const dispatch = useAppDispatch();

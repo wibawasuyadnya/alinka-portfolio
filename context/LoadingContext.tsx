@@ -1,10 +1,8 @@
-"use client";
 /**
  *
  * Unused code
  *  
  */
-
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 import React, { createContext, useContext, useState } from "react";
 

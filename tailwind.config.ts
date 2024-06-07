@@ -36,7 +36,7 @@ const config: Config = {
           "neutral-content": "#d0c8cb",
           "base-100": "#fbfbfb",
           "base-200": "#000000",
-          "base-300": "#bebeb8",
+          "base-300": "#faf5ff",
           "base-content": "#161615",
           "info": "#00a5c5",
           "info-content": "#000a0e",

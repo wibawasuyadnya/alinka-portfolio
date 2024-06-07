@@ -41,6 +41,10 @@ export const getSectionContent = async (): Promise<{ sections: SectionContentTyp
         description
         heading
         slug
+        images {
+          id
+          url
+        }
         wysiwygEditor {
           text
           html

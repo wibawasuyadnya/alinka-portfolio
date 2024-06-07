@@ -37,7 +37,9 @@ export default function Layout({ children }: LayoutType) {
     <div className={`m-0`}>
       <Header />
       <LayoutLoader loading={isLoading} />
+      <main>
       {children}
+      </main>
     </div>
   );
 }
