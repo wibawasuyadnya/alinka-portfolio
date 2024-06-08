@@ -1,3 +1,4 @@
+"use client";
 import Layout from "@/components/Layout";
 import Section from "@/components/section/Section";
 import { Fragment } from "react";

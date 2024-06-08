@@ -1,11 +1,11 @@
 "use client";
-
-import React, { Fragment, ReactNode, useEffect } from "react";
+import React, { ReactNode, useEffect, useRef } from "react";
 import Header from "./Layout-components/Header";
 import { useAppSelector } from "@/redux/hook";
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
+import Footer from "./Layout-components/Footer";
 
 interface LayoutType {
   children?: ReactNode;
@@ -31,15 +31,12 @@ export default function Layout({ children }: LayoutType) {
 
   isLoading ? disableBodyScroll(document) : enableBodyScroll(document);
 
-  console.log(isLoading);
-
   return (
     <div className={`m-0`}>
       <Header />
       <LayoutLoader loading={isLoading} />
-      <main>
-      {children}
-      </main>
+      <main>{children}</main>
+      <Footer />
     </div>
   );
 }

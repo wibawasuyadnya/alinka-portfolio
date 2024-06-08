@@ -1,6 +1,6 @@
 "use client";
 import { AboutDataType, TargetElement } from "@/types/type";
-import React, { Fragment } from "react";
+import React from "react";
 import { useSectionContent } from "@/hooks/useSectionContent";
 import Image from "next/image";
 import HtmlContent from "@/components/Layout-components/HtmlContent";
@@ -28,12 +28,18 @@ function About() {
 
   return (
     <div className={"py-16 px-4 bg-base-300 space-y-5"}>
-      <h2 className={"mb-10 text-primary-content text-center font-semibold text-5xl font-playfair"}>{aboutData && aboutData.heading}</h2>
+      <h2
+        className={
+          "mb-10 text-primary-content text-center font-regular text-5xl font-playfair"
+        }
+      >
+        {aboutData && aboutData.heading}
+      </h2>
       <div className="flex flex-col justify-center items-center min-w-full min-h-fit py-5 px-5">
         <div className="w-full h-full">
           {aboutData && (
             <div className="grid grid-cols-2 gap-4">
-              <div className="w-9/12 mx-auto">
+              <div className="w-8/12 mx-auto">
                 <Image
                   src={aboutData.images.url}
                   width={0}

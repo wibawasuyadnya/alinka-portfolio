@@ -35,7 +35,7 @@ export default function HeroBanner({
   }, [data]);
 
   return (
-    <Fragment>
+    <div className="relative">
       {data && <Slider data={data} />}
       <div className="text-base-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 font-playfair tracking-wide h-fit w-2/5">
         <div className="relative">
@@ -52,6 +52,6 @@ export default function HeroBanner({
           />
         </div>
       </div>
-    </Fragment>
+    </div>
   );
 }

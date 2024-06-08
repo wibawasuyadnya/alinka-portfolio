@@ -1,6 +1,6 @@
 import { gqlKey } from "@/hooks/graphqlkey";
 import { gql, request } from 'graphql-request';
-import { SliderListType, SectionContentType } from "@/types/type";
+import { SliderListType, SectionContentType, PostsContentType, ImagesDataType, SocialDataType } from "@/types/type";
 
 /**
  * Get Requests for slider
@@ -32,7 +32,6 @@ export const getSliderRequest = async (): Promise<{ sliders: SliderListType }> =
  */
 
 export const getSectionContent = async (): Promise<{ sections: SectionContentType }> => {
-
   try {
     const query = gql`
     query Sections {
@@ -60,3 +59,87 @@ export const getSectionContent = async (): Promise<{ sections: SectionContentTyp
   }
 }
 
+
+/**
+ * Get Requests for Images gallery content
+ */
+
+export const getImagesGalleryContent = async (): Promise<{ arts: ImagesDataType }> => {
+  try {
+    const query = gql`
+    query Arts {
+      arts {
+        id
+        name
+        image {
+          url
+          id
+        }
+        slug
+        releaseDate
+      }
+    }    
+    `
+    const result = await request<{ arts: ImagesDataType }>(gqlKey, query);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Failed to fetch images content');
+  }
+}
+
+/**
+ * Get Requests for posts content
+ */
+export const getPostsContent = async (): Promise<{ posts: PostsContentType }> => {
+  try {
+    const query = gql`
+    query Posts {
+      posts {
+        authors {
+          bio
+          name
+          id
+          picture {
+            url
+          }
+        }
+        coverImage {
+          url
+        }
+        publishedAt
+        date
+        content
+      }
+    }
+    `
+    const result = await request<{ posts: PostsContentType }>(gqlKey, query);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Failed to fetch section content');
+  }
+}
+
+/**
+ * Get Requests for social content
+ */
+
+export const getSocialMedia = async (): Promise<{ socials: SocialDataType }> => {
+  try {
+    const query = gql`
+    query Socials {
+      socials {
+        instagramUrl
+        twitterUrl
+        youTubeUrl
+        facebookUrl
+      }
+    }`
+    const result = await request<{ socials: SocialDataType }>(gqlKey, query);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Failed to fetch section content');
+  }
+}

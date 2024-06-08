@@ -65,6 +65,50 @@ export type AboutDataType = {
     };
 };
 
+// image data types 
+export type ImageContentDataType = {
+    id: string;
+    name: string;
+    image: {
+        url: string;
+        id: string;
+    };
+    slug: string;
+    releaseDate: string;
+}
+
+// images data types 
+export type ImagesDataType = ImageContentDataType[];
+
+// post data types
+export type PostContentType = {
+    authors: {
+        bio: string;
+        name: string;
+        id: string;
+        picture: {
+            url: string;
+        }
+    },
+    coverImage: {
+        url: string;
+    },
+    publishedAt: string;
+    date: string;
+    content: string;
+}
+
+// posts content data types
+export type PostsContentType = PostContentType[];
+
+// social data types 
+export type SocialDataType = {
+    instagramUrl: string;
+    twitterUrl: string;
+    youTubeUrl: string;
+    facebookUrl: string;
+}
+
 // Loading data types
 export type LoadingType = {
     loading: boolean;
