@@ -8,6 +8,7 @@ import { useAppDispatch } from "@/redux/hook";
 import Image from "next/image";
 import Typewriter from "@/components/Layout-components/Typewriter";
 
+
 export default function HeroBanner({
   content,
 }: {
