@@ -103,10 +103,9 @@ export type PostsContentType = PostContentType[];
 
 // social data types 
 export type SocialDataType = {
-    instagramUrl: string;
-    twitterUrl: string;
-    youTubeUrl: string;
-    facebookUrl: string;
+    id: string;
+    name: string;
+    url: string;
 }
 
 // Loading data types

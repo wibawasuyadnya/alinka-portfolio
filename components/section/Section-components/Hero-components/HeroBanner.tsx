@@ -39,8 +39,8 @@ export default function HeroBanner({
       {data && <Slider data={data} />}
       <div className="text-base-200 absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 font-playfair tracking-wide h-fit w-2/5">
         <div className="relative">
-          <div className="space-y-3 text-center backdrop-opacity-20 backdrop-blur backdrop-invert bg-base-100/40 p-4 rounded">
-            <h1 className="text-2xl font-bold">{content?.heading}</h1>
+          <div className="space-y-4 text-center backdrop-opacity-20 backdrop-blur backdrop-invert bg-base-100/30 p-4 rounded">
+            <h1 className="text-5xl font-bold">{content?.heading}</h1>
             <Typewriter data={content?.description} delay={1} />
           </div>
           <Image

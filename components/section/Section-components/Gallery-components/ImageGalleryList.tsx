@@ -2,7 +2,7 @@
 import { useAppDispatch } from "@/redux/hook";
 import { setLoading } from "@/redux/slices/globalSlice";
 import { ImagesDataType } from "@/types/type";
-import React, { Fragment, useEffect, useState } from "react";
+import React, {useEffect, useState } from "react";
 import { getImagesGalleryContent } from "@/app/api/_get/route";
 import PlaceHolderData from "@/components/Layout-components/PlaceholderData";
 import Image from "next/image";

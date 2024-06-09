@@ -1,25 +1,19 @@
 // components/SocialIcons.tsx
-interface SocialIconProps {
-  url: string | null;
-  icon: React.ReactNode;
+import React from 'react';
+import DynamicIcon from './DynamicIcon';
+
+interface SocialIconsProps {
+  icons: { name: string; url: string }[];
 }
 
-const SocialIcon: React.FC<SocialIconProps> = ({ url, icon }) => {
-  const handleClick = () => {
-    if (url) {
-      window.open(url, "_blank");
-    }
-  };
-
+const SocialIcons: React.FC<SocialIconsProps> = ({ icons }) => {
   return (
-    <div>
-      {url && (
-        <button onClick={handleClick} className="inline-flex items-center mr-2">
-          {icon}
-        </button>
-      )}
+    <div className="social-icons">
+      {icons.map((icon, index) => (
+        <DynamicIcon key={index} name={icon.name} url={icon.url} />
+      ))}
     </div>
   );
 };
 
-export default SocialIcon;
+export default SocialIcons;

@@ -125,18 +125,17 @@ export const getPostsContent = async (): Promise<{ posts: PostsContentType }> =>
  * Get Requests for social content
  */
 
-export const getSocialMedia = async (): Promise<{ socials: SocialDataType }> => {
+export const getSocialMedia = async (): Promise<{ socials: SocialDataType[] }> => {
   try {
     const query = gql`
     query Socials {
       socials {
-        instagramUrl
-        twitterUrl
-        youTubeUrl
-        facebookUrl
+        id
+        name
+        url
       }
     }`
-    const result = await request<{ socials: SocialDataType }>(gqlKey, query);
+    const result = await request<{ socials: SocialDataType[] }>(gqlKey, query);
     return result;
   } catch (err) {
     console.error(err);
