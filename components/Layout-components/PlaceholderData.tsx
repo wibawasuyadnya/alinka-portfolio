@@ -34,7 +34,7 @@ export default function PlaceHolderData({ type }: PlaceHolderDataProps) {
             Opps! Sorry an error found
           </h4>
           <p className="w-[400px] text-center font-normal text-base">
-            Looks like we weren't able to connect to our server, please try
+            Looks like we weren&apos;t able to connect to our server, please try
             again in few minutes
           </p>
         </div>
