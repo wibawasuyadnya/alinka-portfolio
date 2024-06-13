@@ -39,8 +39,8 @@ export default async function ArtIDetail({ params }: Props) {
   const previousArtId = getPreviousArtId();
 
   return (
-    <div className="flex flex-col w-full min-h-[900px] items-center justify-center">
-      <div className="relative w-fit">
+    <div className="flex flex-col w-full h-screen items-center justify-center">
+      <div className="relative w-fit mt-20">
         <Image
           src={detailArt.art.image.url}
           alt={detailArt.art.name}
@@ -49,7 +49,7 @@ export default async function ArtIDetail({ params }: Props) {
           className="h-[600px] object-contain"
         />
         <Link className="absolute top-0 right-[-20px]" href={"/"}>
-          <CircleX className="stroke-primary bg-white w-11 h-11 rounded-full" />
+          <CircleX className="stroke-primary w-11 h-11 rounded-full" />
         </Link>
         <div className="w-full flex flex-row justify-between items-center px-14 py-4">
           <Link href={`/art/${previousArtId}`}>
