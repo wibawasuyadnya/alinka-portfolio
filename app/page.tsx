@@ -1,12 +1,11 @@
-"use client";
 import Layout from "@/components/Layout";
-import Section from "@/components/section/Section";
+import Section from "@/components/Page-components/home/section/Section";
 import { Fragment } from "react";
 
 export default function Home() {
   return (
     <Fragment>
-      <Layout>
+      <Layout withLoader={true}>
         <Section />
       </Layout>
     </Fragment>

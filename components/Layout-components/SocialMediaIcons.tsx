@@ -1,6 +1,6 @@
 // components/SocialIcons.tsx
-import React from 'react';
-import DynamicIcon from './DynamicIcon';
+import React from "react";
+import DynamicIcon from "./DynamicIcon";
 
 interface SocialIconsProps {
   icons: { name: string; url: string }[];

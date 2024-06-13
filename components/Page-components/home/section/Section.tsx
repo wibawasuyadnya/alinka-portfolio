@@ -9,8 +9,12 @@ export default function Section() {
     <Fragment>
       <Hero />
       <Quotation />
-      <About />
-      <Gallery />
+      <section id="about">
+        <About />
+      </section>
+      <section id="gallery">
+        <Gallery />
+      </section>
     </Fragment>
   );
 }

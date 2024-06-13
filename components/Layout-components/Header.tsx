@@ -1,9 +1,9 @@
 "use client";
-
 import Head from "next/head";
 import React, { Fragment, useContext, useEffect, useState } from "react";
 import ThemeToggleIcon from "./Header-components/ThemeToggleIcon";
 import { motion } from "framer-motion";
+import Link from "next/link";
 
 interface HeaderType {
   title?: string;
@@ -25,9 +25,9 @@ const StickyHeader = ({ show }: { show?: boolean }) => {
       >
         <h3 className="font-semibold text-xl'">Alinka&apos;s Art Gallery</h3>
         <nav className="col-span-3 flex flex-row gap-5 font-medium">
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
+          <Link href="#about">About</Link>
+          <Link href="#gallery">Gallery</Link>
+          <Link href="#contact">Contact</Link>
         </nav>
         <div>
           <ThemeToggleIcon />
@@ -47,9 +47,9 @@ const StaticHeader = () => {
           </h3>
         </div>
         <nav className={"col-span-3 flex flex-row gap-10 font-medium text-lg"}>
-          <a href="#about">About</a>
-          <a href="#work">Work</a>
-          <a href="#contact">Contact</a>
+          <Link href="#about">About</Link>
+          <Link href="#gallery">Gallery</Link>
+          <Link href="#contact">Contact</Link>
         </nav>
         <div>
           <ThemeToggleIcon />

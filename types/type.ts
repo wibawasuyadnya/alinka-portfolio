@@ -77,6 +77,14 @@ export type ImageContentDataType = {
     releaseDate: string;
 }
 
+export type ImageDetailType = {
+    slug: string;
+    name: string;
+    image: {
+        url: string;
+    }
+}
+
 // images data types 
 export type ImagesDataType = ImageContentDataType[];
 

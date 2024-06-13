@@ -1,6 +1,6 @@
 import { gqlKey } from "@/hooks/graphqlkey";
 import { gql, request } from 'graphql-request';
-import { SliderListType, SectionContentType, PostsContentType, ImagesDataType, SocialDataType } from "@/types/type";
+import { SliderListType, SectionContentType, PostsContentType, ImagesDataType, SocialDataType, ImageDetailType } from "@/types/type";
 
 /**
  * Get Requests for slider
@@ -85,6 +85,31 @@ export const getImagesGalleryContent = async (): Promise<{ arts: ImagesDataType 
   } catch (err) {
     console.error(err);
     throw new Error('Failed to fetch images content');
+  }
+}
+
+/**
+ * Get request for image detail data
+ */
+
+export const getImageDetailContent = async ({ id }: { id: string }): Promise<{ art: ImageDetailType }> => {
+  try {
+    const query = gql`
+      query Art($id: ID!) {
+        art(where: { id: $id }) {
+          slug
+          name
+          image {
+            url
+          }
+        }
+      }`
+    const variables = { id };
+    const result = await request<{ art: ImageDetailType }>(gqlKey, query, variables);
+    return result;
+  } catch (err) {
+    console.error(err);
+    throw new Error('Failed to fetch images detail content');
   }
 }
 

@@ -9,6 +9,7 @@ import Footer from "./Layout-components/Footer";
 
 interface LayoutType {
   children?: ReactNode;
+  withLoader?: boolean;
 }
 
 // define component hook for preloading
@@ -26,7 +27,7 @@ const LayoutLoader = ({ loading }: LoadingType) => {
   return null;
 };
 
-export default function Layout({ children }: LayoutType) {
+export default function Layout({ children, withLoader = false }: LayoutType) {
   const isLoading = useAppSelector((state) => state.global.loading);
 
   isLoading ? disableBodyScroll(document) : enableBodyScroll(document);
@@ -34,7 +35,7 @@ export default function Layout({ children }: LayoutType) {
   return (
     <div className={`m-0`}>
       <Header />
-      <LayoutLoader loading={isLoading} />
+      {withLoader ? <LayoutLoader loading={isLoading} /> : null}
       <main>{children}</main>
       <Footer />
     </div>

@@ -2,15 +2,17 @@
 import { useAppDispatch } from "@/redux/hook";
 import { setLoading } from "@/redux/slices/globalSlice";
 import { ImagesDataType } from "@/types/type";
-import React, {useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { getImagesGalleryContent } from "@/app/api/_get/route";
 import PlaceHolderData from "@/components/Layout-components/PlaceholderData";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
+import { useRouter } from "next/navigation";
 
 export default function ImageGalleryList() {
   const [data, setData] = useState<ImagesDataType | null>(null);
   const dispatch = useAppDispatch();
+  const router = useRouter();
 
   const getImageList = async () => {
     dispatch(setLoading(true));
@@ -46,7 +48,10 @@ export default function ImageGalleryList() {
       {data.map((gallery, idx) => {
         return (
           <div key={idx} className="masonry-item">
-            <div className="rounded-[20px] hover:shadow-lg relative cursor-pointer transform transition duration-1000 hover:scale-105">
+            <div
+              onClick={() => router.push(`/art/${gallery.id}`)}
+              className="rounded-[20px] hover:shadow-lg relative cursor-pointer transform transition duration-1000 hover:scale-105"
+            >
               <Image
                 className=""
                 width={0}
@@ -60,7 +65,9 @@ export default function ImageGalleryList() {
                 alt={gallery.name}
                 src={gallery.image.url}
               />
-              <div className="overlay text-primary-content bg-base-100/50 capitalize">{gallery.name}</div>
+              <div className="overlay text-primary-content bg-base-100/50 capitalize">
+                {gallery.name}
+              </div>
             </div>
           </div>
         );

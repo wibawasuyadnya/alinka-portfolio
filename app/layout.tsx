@@ -21,13 +21,13 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={public_sans.className}>
-      <Providers>
-        <ThemeProvider>
-          <ClientThemeWrapper>
-            {children}
-            <ScrollTopButton />
-          </ClientThemeWrapper>
-        </ThemeProvider>
+        <Providers>
+          <ThemeProvider>
+            <ClientThemeWrapper>
+              {children}
+              <ScrollTopButton />
+            </ClientThemeWrapper>
+          </ThemeProvider>
         </Providers>
       </body>
     </html>
