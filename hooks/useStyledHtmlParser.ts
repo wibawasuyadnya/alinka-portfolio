@@ -1,5 +1,4 @@
 // hooks/useStyledHtmlParser.tsx
-
 import React from "react";
 import parse, { domToReact, HTMLReactParserOptions, Element, DOMNode } from "html-react-parser";
 import { TargetElement } from "@/types/type";
