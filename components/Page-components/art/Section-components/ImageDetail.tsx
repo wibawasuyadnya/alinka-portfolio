@@ -2,10 +2,8 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { CircleX } from "lucide-react";
-import {
-  getImagesGalleryContent,
-  getImageDetailContent,
-} from "@/app/api/_get/route";
+import { GET as getImageDetailContent } from "@/app/api/_get/imageDetail";
+import { GET as getImagesGalleryContent } from "@/app/api/_get/imageGallery";
 import { ImagesDataType } from "@/types/type";
 
 interface Props {

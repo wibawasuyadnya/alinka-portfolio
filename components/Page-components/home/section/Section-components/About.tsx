@@ -1,12 +1,12 @@
 "use client";
 import { AboutDataType, TargetElement } from "@/types/type";
 import React from "react";
-import { useSectionContent } from "@/hooks/useSectionContent";
+import { useSectionData } from "@/hooks/data/useSectionData";
 import Image from "next/image";
 import HtmlContent from "@/components/Layout-components/HtmlContent";
 
 function About() {
-  const aboutSection = useSectionContent("about");
+  const { data: aboutSection } = useSectionData("about");
 
   const aboutData: AboutDataType | null = aboutSection
     ? {

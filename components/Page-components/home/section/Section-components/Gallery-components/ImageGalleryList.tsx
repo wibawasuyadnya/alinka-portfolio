@@ -1,36 +1,14 @@
 "use client";
-import { useAppDispatch } from "@/redux/hook";
-import { setLoading } from "@/redux/slices/globalSlice";
-import { ImagesDataType } from "@/types/type";
-import React, { useEffect, useState } from "react";
-import { getImagesGalleryContent } from "@/app/api/_get/route";
+import React from "react";
 import PlaceHolderData from "@/components/Layout-components/PlaceholderData";
 import Image from "next/image";
 import Masonry from "react-masonry-css";
 import { useRouter } from "next/navigation";
+import { useImageGalleryData } from "@/hooks/data/useImageGallery";
 
 export default function ImageGalleryList() {
-  const [data, setData] = useState<ImagesDataType | null>(null);
-  const dispatch = useAppDispatch();
   const router = useRouter();
-
-  const getImageList = async () => {
-    dispatch(setLoading(true));
-    try {
-      const res = await getImagesGalleryContent();
-      if (res) {
-        const art = res.arts;
-        setData(art);
-        dispatch(setLoading(false));
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    if (!data) getImageList();
-  }, [!data]);
+  const { data: images } = useImageGalleryData();
 
   const breakpointColumnsObj = {
     default: 4,
@@ -39,13 +17,13 @@ export default function ImageGalleryList() {
     500: 1,
   };
 
-  return data && data.length >= 0 ? (
+  return images && images.length >= 0 ? (
     <Masonry
       breakpointCols={breakpointColumnsObj}
       className="my-masonry-grid"
       columnClassName="my-masonry-grid_column"
     >
-      {data.map((gallery, idx) => {
+      {images.map((gallery, idx) => {
         return (
           <div key={idx} className="masonry-item">
             <div

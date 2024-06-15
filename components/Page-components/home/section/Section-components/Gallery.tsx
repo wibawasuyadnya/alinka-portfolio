@@ -1,18 +1,15 @@
 "use client";
 import React from "react";
 import { DefaultPageDataType } from "@/types/type";
-import { useSectionContent } from "@/hooks/useSectionContent";
 import ImageGalleryList from "./Gallery-components/ImageGalleryList";
+import { useSectionData } from "@/hooks/data/useSectionData";
 
 function Gallery() {
-  const gallerySection = useSectionContent("art-gallery");
+  const { data: gallerySection } = useSectionData("art-gallery");
 
-  const galleryData: DefaultPageDataType | null = gallerySection
-    ? {
-        description: gallerySection.description,
-        heading: gallerySection.heading,
-      }
-    : null;
+  const galleryData: DefaultPageDataType | null = gallerySection 
+  ? { description: gallerySection.description, heading: gallerySection.heading 
+  } : null;
 
   return (
     <div className={"py-16 px-10 bg-base-100 space-y-5"}>

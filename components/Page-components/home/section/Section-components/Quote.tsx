@@ -1,11 +1,11 @@
 "use client";
 import React from "react";
-import { useSectionContent } from "@/hooks/useSectionContent";
 import { QuotationDataType, TargetElement } from "@/types/type";
 import HtmlContent from "@/components/Layout-components/HtmlContent";
+import { useSectionData } from "@/hooks/data/useSectionData";
 
 function Quotation() {
-  const quoteSection = useSectionContent("quotation");
+  const { data: quoteSection } = useSectionData("quotation");
 
   const quoteData: QuotationDataType | null = quoteSection
     ? {
@@ -18,8 +18,12 @@ function Quotation() {
   const htmlString = `${quoteData?.wysiwygEditor.html}`;
 
   const targets: TargetElement[] = [
-    { tag: "a", className: "px-5 py-3 text-base bg-primary text-white rounded-md z-10 font-sans cursor-pointer"},
-    { tag: "em", className: "text-3xl font-normal"},
+    {
+      tag: "a",
+      className:
+        "px-5 py-3 text-base bg-primary text-white rounded-md z-10 font-sans cursor-pointer",
+    },
+    { tag: "em", className: "text-3xl font-normal" },
     { tag: "p", className: "text-2xl font-playfair" },
   ];
 

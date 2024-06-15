@@ -1,40 +1,17 @@
 "use client";
-import { getSocialMedia } from "@/app/api/_get/route";
-import { useAppDispatch } from "@/redux/hook";
-import { setLoading } from "@/redux/slices/globalSlice";
-import { SocialDataType } from "@/types/type";
 import React, { useState, useEffect } from "react";
 import SocialIcons from "./SocialMediaIcons";
 import { Heart } from "lucide-react";
+import { useSocialData } from "@/hooks/data/useSocialMediaData";
 
 export default function Footer() {
-  const [data, setData] = useState<SocialDataType[] | null>(null);
-  const dispatch = useAppDispatch();
-
-  const getSocialMediaList = async () => {
-    dispatch(setLoading(true));
-    try {
-      const res = await getSocialMedia();
-      if (res) {
-        const social = res.socials;
-        setData(social);
-        dispatch(setLoading(false));
-      }
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    if (!data) getSocialMediaList();
-  }, [!data]);
-
+  const { data: socialData } = useSocialData();
   return (
     <div className="flex flex-row justify-between h-fit px-8 py-6 bg-base-300">
       <div className="flex flex-row gap-4 justify-center items-center">
-        {data && (
+        {socialData && (
           <SocialIcons
-            icons={data.map((social) => ({
+            icons={socialData.map((social) => ({
               name: social.name,
               url: social.url,
             }))}
