@@ -21,7 +21,7 @@ export default function Footer() {
       </div>
 
       <div className="flex flex-row gap-2">
-        <h5 className="font-normal text-base">Made with</h5>
+        <h5 className="font-normal text-base">Made By Alinka</h5>
         <Heart style={{ width: "20px", fill: "#f56565", stroke: "#f56565" }} />
       </div>
     </div>
