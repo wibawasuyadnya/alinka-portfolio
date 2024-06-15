@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/context/ThemeContext";
 import ClientThemeWrapper from "@/context/ClientThemeWrapper";
 import { Providers } from "@/redux/provider";
 import ScrollTopButton from "@/components/Layout-components/ScrollTop";
+import { Analytics } from "@vercel/analytics/react";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
 
@@ -25,6 +26,7 @@ export default function RootLayout({
           <ThemeProvider>
             <ClientThemeWrapper>
               {children}
+              <Analytics />
               <ScrollTopButton />
             </ClientThemeWrapper>
           </ThemeProvider>
