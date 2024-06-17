@@ -10,7 +10,13 @@ import Footer from "./Layout-components/Footer";
 interface LayoutType {
   children?: ReactNode;
   withLoader?: boolean;
+  page?: string;
 }
+
+type Navigation = {
+  href: string;
+  heading: string;
+};
 
 // define component hook for preloading
 const LayoutLoader = ({ loading }: LoadingType) => {
@@ -27,14 +33,44 @@ const LayoutLoader = ({ loading }: LoadingType) => {
   return null;
 };
 
-export default function Layout({ children, withLoader = false }: LayoutType) {
+export default function Layout({
+  children,
+  withLoader = false,
+  page,
+}: LayoutType) {
   const isLoading = useAppSelector((state) => state.global.loading);
 
   isLoading ? disableBodyScroll(document) : enableBodyScroll(document);
 
+  function typeNavbar({ type }: { type?: string }) {
+    let navbar: Navigation[] = [];
+    if (type === "home") {
+      navbar = [
+        {
+          heading: "About",
+          href: "#about",
+        },
+        {
+          heading: "Gallery",
+          href: "#gallery",
+        },
+        {
+          heading: "Contact",
+          href: "#contact",
+        },
+      ];
+    }
+    if (type === "art") {
+      navbar = [];
+    }
+    return navbar;
+  }
+
+  const homeNavbar = typeNavbar({ type: page });
+
   return (
     <div className={`m-0`}>
-      <Header />
+      <Header navbar={homeNavbar} />
       {withLoader ? <LayoutLoader loading={isLoading} /> : null}
       <main>{children}</main>
       <Footer />

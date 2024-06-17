@@ -9,15 +9,22 @@ import { useRouter } from "next/navigation";
 interface HeaderType {
   title?: string;
   description?: string;
+  navbar?: {
+    href: string;
+    heading: string;
+  }[];
 }
 
-const StickyHeader = ({
-  show,
-  onClick,
-}: {
+type ChildHeaderProps = {
   show?: boolean;
   onClick: () => void;
-}) => {
+  navbar?: {
+    href: string;
+    heading: string;
+  }[];
+};
+
+const StickyHeader = ({ show, navbar, onClick }: ChildHeaderProps) => {
   return (
     <motion.div
       className={`top-0 navbar sticky z-50 text-white h-fit mt-[-100px]`}
@@ -33,10 +40,15 @@ const StickyHeader = ({
         <h3 onClick={onClick} className="cursor-pointer font-semibold text-xl'">
           Alinka&apos;s Art Gallery
         </h3>
-        <nav className="col-span-3 flex flex-row gap-5 font-medium">
-          <Link href="#about">About</Link>
-          <Link href="#gallery">Gallery</Link>
-          <Link href="#contact">Contact</Link>
+        <nav className="col-span-3 flex flex-row gap-5 font-medium ">
+          {navbar &&
+            navbar.map((item, idx) => {
+              return (
+                <Link key={idx} href={item.href}>
+                  {item.heading}
+                </Link>
+              );
+            })}
         </nav>
         <div>
           <ThemeToggleIcon />
@@ -46,7 +58,7 @@ const StickyHeader = ({
   );
 };
 
-const StaticHeader = ({ onClick }: { onClick: () => void }) => {
+const StaticHeader = ({ onClick, navbar }: ChildHeaderProps) => {
   return (
     <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-base-200">
       <div className={"w-full grid grid-cols-5 gap-5 place-items-center p-5"}>
@@ -59,9 +71,14 @@ const StaticHeader = ({ onClick }: { onClick: () => void }) => {
           </h3>
         </div>
         <nav className={"col-span-3 flex flex-row gap-10 font-medium text-lg"}>
-          <Link href="#about">About</Link>
-          <Link href="#gallery">Gallery</Link>
-          <Link href="#contact">Contact</Link>
+          {navbar &&
+            navbar.map((item, idx) => {
+              return (
+                <Link key={idx} href={item.href}>
+                  {item.heading}
+                </Link>
+              );
+            })}
         </nav>
         <div>
           <ThemeToggleIcon />
@@ -71,7 +88,7 @@ const StaticHeader = ({ onClick }: { onClick: () => void }) => {
   );
 };
 
-export default function Header({ title, description }: HeaderType) {
+export default function Header({ title, description, navbar }: HeaderType) {
   const [showStickyHeader, setShowStickyHeader] = useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const router = useRouter();
@@ -107,8 +124,12 @@ export default function Header({ title, description }: HeaderType) {
         <link rel="shortcut icon" href="/app/favicon.ico" type="image/x-icon" />
       </Head>
       {/* sticky header hide & show */}
-      <StickyHeader show={showStickyHeader} onClick={() => router.push("/")} />
-      <StaticHeader onClick={() => router.push("/")} />
+      <StickyHeader
+        show={showStickyHeader}
+        onClick={() => router.push("/")}
+        navbar={navbar}
+      />
+      <StaticHeader onClick={() => router.push("/")} navbar={navbar} />
     </Fragment>
   );
 }

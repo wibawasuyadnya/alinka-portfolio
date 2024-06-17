@@ -5,7 +5,7 @@ import { Fragment } from "react";
 export default function Home() {
   return (
     <Fragment>
-      <Layout withLoader={true}>
+      <Layout withLoader={true} page="home">
         <Section />
       </Layout>
     </Fragment>

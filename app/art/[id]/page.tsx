@@ -10,7 +10,7 @@ interface Props {
 export default async function ArtDetail({ params }: Props) {
   console.log(params.id);
   return (
-    <Layout>
+    <Layout page="art">
       <Section params={params} />
     </Layout>
   );

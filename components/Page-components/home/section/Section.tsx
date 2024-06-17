@@ -15,6 +15,9 @@ export default function Section() {
       <section id="gallery">
         <Gallery />
       </section>
+      <section id="contact">
+        <ContactSection />
+      </section>
     </Fragment>
   );
 }
