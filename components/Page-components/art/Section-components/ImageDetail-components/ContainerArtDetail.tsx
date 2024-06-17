@@ -32,24 +32,24 @@ export default function ContainerArtDetail({
 
   return (
     <div className="p-[20px] w-full h-full flex flex-row justify-center items-center">
-      <div className="relative w-3/4 h-full rounded-xl bg-base-300 flex flex-row gap-3 shadow-xl">
-        <div className="w-full h-auto relative">
+      <div className="relative w-3/4 h-full rounded-xl bg-base-300 flex flex-row gap-3 shadow-[0_0px_30px_1px_rgba(0,0,0,0.18)]">
+        <div className="w-full h-auto relative p-4">
           <ImageFullScreen
             handle={handle}
             image={artDetail.art.image}
             name={artDetail.art.name}
           />
-          <button onClick={handle.enter} className="absolute top-3 right-3">
+          <button onClick={handle.enter} className="absolute top-6 right-6">
             <Fullscreen
               className={"stroke-primary/50 w-8 h-8 hover:stroke-primary/100"}
             />
           </button>
         </div>
         <Link
-          className="absolute top-[-10px] right-[-10px] bg-base-300 rounded-full"
+          className="absolute top-2 right-2 bg-base-300 rounded-full flex flex-row gap-2 justify-center items-center"
           href={"/"}
         >
-          <CircleX className="stroke-red-400 w-11 h-11 rounded-full" />
+          <CircleX className="stroke-red-400 w-8 h-8 rounded-full" />
         </Link>
 
         <div className="w-full flex flex-col justify-center items-stretch gap-5 p-4">
