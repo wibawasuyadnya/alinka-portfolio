@@ -80,6 +80,7 @@ export type ImageContentDataType = {
 export type ImageDetailType = {
     slug: string;
     name: string;
+    releaseDate: string;
     image: {
         url: string;
     }

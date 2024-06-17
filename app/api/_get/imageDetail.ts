@@ -10,6 +10,7 @@ const fetchImageDetailQuery = gql`
         art(where: { id: $id }) {
           slug
           name
+          releaseDate
           image {
             url
           }

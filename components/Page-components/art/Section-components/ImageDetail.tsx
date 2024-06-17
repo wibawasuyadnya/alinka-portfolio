@@ -1,10 +1,8 @@
 import { notFound } from "next/navigation";
-import Image from "next/image";
-import Link from "next/link";
-import { CircleX } from "lucide-react";
 import { GET as getImageDetailContent } from "@/app/api/_get/imageDetail";
 import { GET as getImagesGalleryContent } from "@/app/api/_get/imageGallery";
 import { ImagesDataType } from "@/types/type";
+import ContainerArtDetail from "./ImageDetail-components/ContainerArtDetail";
 
 interface Props {
   params: {
@@ -37,27 +35,12 @@ export default async function ArtIDetail({ params }: Props) {
   const previousArtId = getPreviousArtId();
 
   return (
-    <div className="flex flex-col w-full h-screen items-center justify-center">
-      <div className="relative w-fit mt-20">
-        <Image
-          src={detailArt.art.image.url}
-          alt={detailArt.art.name}
-          width={500}
-          height={600}
-          className="h-[600px] object-contain"
-        />
-        <Link className="absolute top-0 right-[-20px]" href={"/"}>
-          <CircleX className="stroke-primary w-11 h-11 rounded-full" />
-        </Link>
-        <div className="w-full flex flex-row justify-between items-center px-14 py-4">
-          <Link href={`/art/${previousArtId}`}>
-            <b>Previous</b>
-          </Link>
-          <Link href={`/art/${nextArtId}`}>
-            <b>Next</b>
-          </Link>
-        </div>
-      </div>
+    <div className="flex flex-col w-full h-screen items-center justify-center pt-20">
+      <ContainerArtDetail
+        artDetail={detailArt}
+        nextId={nextArtId}
+        prevId={previousArtId}
+      />
     </div>
   );
 }
