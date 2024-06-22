@@ -21,14 +21,16 @@ function Contact() {
   };
 
   const handleSendMessage = () => {
-    const whatsappUrl = `https://wa.me/+6289510390087?text=${encodeURIComponent(message)}`;
+    const whatsappUrl = `https://wa.me/+6289510390087?text=${encodeURIComponent(
+      message
+    )}`;
     window.open(whatsappUrl, "_blank");
   };
 
   const htmlString = `${contactData?.wysiwygEditor.html}`;
 
   const targets: TargetElement[] = [
-    { tag: "h2", className: "text-3xl font-semibold font-playfair" },
+    { tag: "h2", className: "text-3xl font-semibold " },
     { tag: "p", className: "text-xl font-normal" },
   ];
 
@@ -48,6 +50,22 @@ function Contact() {
         html={htmlString}
         targets={targets}
       />
+      <div className="w-full flex flex-col justify-center items-center">
+        <div className="w-2/4 flex flex-row gap-2 items-center justify-center">
+          <input
+            value={message}
+            onChange={handleInputChange}
+            placeholder="Type something here..."
+            className="input input-bordered w-full max-w-xs"
+          />
+          <button
+            onClick={handleSendMessage}
+            className="button capitalize px-5 py-3 text-base bg-primary text-white rounded-md font-sans cursor-pointer w-2/6"
+          >
+            send
+          </button>
+        </div>
+      </div>
     </div>
   );
 }
