@@ -56,7 +56,7 @@ export type QuotationDataType = {
 
 // about section data types
 export type AboutDataType = {
-    heading: string
+    heading: string;
     description: string;
     wysiwygEditor: WysiwygEditorType;
     images: {
@@ -64,6 +64,23 @@ export type AboutDataType = {
         url: string;
     };
 };
+
+// contact section data types
+export type ContactDataType = {
+    heading: string;
+    description: string;
+    wysiwygEditor: WysiwygEditorType;
+}
+
+export type NotFoundDataType = {
+    heading: string;
+    description: string;
+    wysiwygEditor: WysiwygEditorType;
+    images: {
+        id: string;
+        url: string;
+    };
+}
 
 // image data types 
 export type ImageContentDataType = {
@@ -121,3 +138,13 @@ export type SocialDataType = {
 export type LoadingType = {
     loading: boolean;
 };
+
+// dynamic header data types 
+export type DynamicHeaderType = {
+    show?: boolean;
+    onClick: () => void;
+    navbar?: {
+        href: string;
+        heading: string;
+    }[];
+}

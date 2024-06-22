@@ -2,13 +2,15 @@
 import { useState, useEffect } from "react";
 import { useAppDispatch } from "@/redux/hook";
 import { setLoading } from "@/redux/slices/globalSlice";
-import { SectionType, DefaultPageDataType, AboutDataType, QuotationDataType } from "@/types/type";
+import { SectionType, DefaultPageDataType, AboutDataType, QuotationDataType, ContactDataType, NotFoundDataType } from "@/types/type";
 import { GET } from "@/app/api/_get/section";
 
 // Define types for each section
 type SectionDataType = {
     about: AboutDataType;
     quotation: QuotationDataType;
+    contact: ContactDataType;
+    notfound: NotFoundDataType;
 };
 
 // Helper type to handle default cases

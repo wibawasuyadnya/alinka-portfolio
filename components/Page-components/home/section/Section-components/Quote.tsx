@@ -29,7 +29,15 @@ function Quotation() {
 
   return (
     <div className="flex flex-col justify-center items-center max-w-full h-fit pt-20 pb-20">
-      {quoteData && <HtmlContent html={htmlString} targets={targets} />}
+      {quoteData && (
+        <HtmlContent
+          attribute={{
+            className: "flex flex-col justify-center items-center gap-8",
+          }}
+          html={htmlString}
+          targets={targets}
+        />
+      )}
     </div>
   );
 }

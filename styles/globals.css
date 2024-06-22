@@ -19,7 +19,7 @@
     font-style: italic;
     font-weight: 100 900;
     font-display: swap;
-    src: url("/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght")
+    src: url("/assets/fonts/Playfair_Display/PlayfairDisplay-Italic-VariableFont_wght.ttf")
       format("woff2");
     font-named-instance: "Italic";
   }

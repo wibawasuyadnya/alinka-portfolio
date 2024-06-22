@@ -1,16 +1,18 @@
 "use client";
-import React, { Fragment, useState, ChangeEvent } from "react";
+import React, { useState, ChangeEvent } from "react";
 import { useSectionData } from "@/hooks/data/useSectionData";
-import { DefaultPageDataType } from "@/types/type";
+import { ContactDataType, TargetElement } from "@/types/type";
+import HtmlContent from "@/components/Layout-components/HtmlContent";
 
 function Contact() {
   const [message, setMessage] = useState<string>("");
   const { data: contactSection } = useSectionData("contact");
 
-  const contactData: DefaultPageDataType | null = contactSection
+  const contactData: ContactDataType | null = contactSection
     ? {
-        description: contactSection.description,
         heading: contactSection.heading,
+        description: contactSection.description,
+        wysiwygEditor: contactSection.wysiwygEditor,
       }
     : null;
 
@@ -19,14 +21,19 @@ function Contact() {
   };
 
   const handleSendMessage = () => {
-    const whatsappUrl = `https://wa.me/+6289510390087?text=${encodeURIComponent(
-      message
-    )}`;
+    const whatsappUrl = `https://wa.me/+6289510390087?text=${encodeURIComponent(message)}`;
     window.open(whatsappUrl, "_blank");
   };
 
+  const htmlString = `${contactData?.wysiwygEditor.html}`;
+
+  const targets: TargetElement[] = [
+    { tag: "h2", className: "text-3xl font-semibold font-playfair" },
+    { tag: "p", className: "text-xl font-normal" },
+  ];
+
   return (
-    <div className={"py-16 px-10 bg-base-100 space-y-5"}>
+    <div className={"py-16 px-10 bg-base-100 space-y-2"}>
       <h2
         className={
           "mb-24 text-primary-content text-center font-regular text-5xl font-playfair"
@@ -34,6 +41,13 @@ function Contact() {
       >
         {contactData && contactData.heading}
       </h2>
+      <HtmlContent
+        attribute={{
+          className: "flex flex-col justify-center items-center gap-5",
+        }}
+        html={htmlString}
+        targets={targets}
+      />
     </div>
   );
 }

@@ -50,7 +50,9 @@ function About() {
                 />
               </div>
               <div className="w-5/6">
-                <HtmlContent html={htmlString} targets={targets} />
+                <div className="flex flex-col justify-center items-center gap-8">
+                  <HtmlContent html={htmlString} targets={targets} />
+                </div>
               </div>
             </div>
           )}

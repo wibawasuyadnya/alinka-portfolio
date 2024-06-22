@@ -23,7 +23,7 @@ export default function Slider({ data }: SliderItemType) {
   const activeBulletClass = `swiper-pagination-bullet-active bg-border-200`;
   const bulletClass = `swiper-pagination-bullet bg-border-200`;
   return (
-    <Fragment>
+    <div>
       <Swiper
         modules={[EffectFade, Pagination, Autoplay]}
         centeredSlides={true}
@@ -68,6 +68,6 @@ export default function Slider({ data }: SliderItemType) {
           : null}
       </Swiper>
       <div className="absolute bottom-0 swiper-pagination"></div>
-    </Fragment>
+    </div>
   );
 }
