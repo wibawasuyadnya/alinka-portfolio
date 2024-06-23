@@ -1,11 +1,12 @@
 "use client";
-import React, { ReactNode, useEffect, useRef } from "react";
+import React, { ReactNode, useEffect, MouseEvent } from "react";
 import Header from "./Layout-components/Header";
 import { useAppSelector } from "@/redux/hook";
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
+import { ReactLenis } from "@studio-freight/react-lenis";
 
 interface LayoutType {
   children?: ReactNode;
@@ -17,6 +18,8 @@ type Navigation = {
   href: string;
   heading: string;
 };
+
+const ENVIRONMENT = process.env.NODE_ENV;
 
 // define component hook for preloading
 const LayoutLoader = ({ loading }: LoadingType) => {
@@ -41,6 +44,12 @@ export default function Layout({
   const isLoading = useAppSelector((state) => state.global.loading);
 
   isLoading ? disableBodyScroll(document) : enableBodyScroll(document);
+
+  const handleContextMenu = (event: MouseEvent) => {
+    if (ENVIRONMENT === "production") {
+      event.preventDefault();
+    }
+  };
 
   function typeNavbar({ type }: { type?: string }) {
     let navbar: Navigation[] = [];
@@ -69,11 +78,13 @@ export default function Layout({
   const homeNavbar = typeNavbar({ type: page });
 
   return (
-    <div className={`m-0`}>
-      <Header navbar={homeNavbar} />
-      {withLoader ? <LayoutLoader loading={isLoading} /> : null}
-      <main>{children}</main>
-      <Footer />
-    </div>
+    <ReactLenis root>
+      <div className={`m-0`} onContextMenu={handleContextMenu}>
+        <Header navbar={homeNavbar} />
+        {withLoader ? <LayoutLoader loading={isLoading} /> : null}
+        <main>{children}</main>
+        <Footer />
+      </div>
+    </ReactLenis>
   );
 }
