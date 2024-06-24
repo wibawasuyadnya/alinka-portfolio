@@ -44,6 +44,7 @@ export type HeroPropsType = {
 // html Target element types
 export type TargetElement = {
     tag: string;
+    href?: string;
     className: string;
 };
 
@@ -139,6 +140,12 @@ export type LoadingType = {
     loading: boolean;
 };
 
+// navigation header data types
+export type NavigationHeader = {
+    href: string;
+    heading: string;
+  };
+
 // dynamic header data types 
 export type DynamicHeaderType = {
     show?: boolean;
@@ -147,4 +154,10 @@ export type DynamicHeaderType = {
         href: string;
         heading: string;
     }[];
+}
+
+// posts list data types
+
+export type PostsListType = {
+    
 }

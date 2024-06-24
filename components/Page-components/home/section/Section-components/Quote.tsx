@@ -20,6 +20,7 @@ function Quotation() {
   const targets: TargetElement[] = [
     {
       tag: "a",
+      href: "/cicing",
       className:
         "px-5 py-3 text-base bg-primary text-white rounded-md z-10 font-sans cursor-pointer",
     },

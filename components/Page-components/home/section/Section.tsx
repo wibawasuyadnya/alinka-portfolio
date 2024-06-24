@@ -4,6 +4,7 @@ import Quotation from "./Section-components/Quote";
 import About from "./Section-components/About";
 import Gallery from "./Section-components/Gallery";
 import Contact from "./Section-components/Contact";
+import Post from "./Section-components/Post";
 
 export default function Section() {
   return (
@@ -16,6 +17,7 @@ export default function Section() {
       <section id="gallery">
         <Gallery />
       </section>
+      <Post />
       <section id="contact">
         <Contact />
       </section>

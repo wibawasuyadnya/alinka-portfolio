@@ -7,17 +7,15 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis";
+import { useLanguage } from "@/context/LanguageContext";
+import { Language } from "@/types/enum";
+import { NavigationHeader } from "@/types/type";
 
 interface LayoutType {
   children?: ReactNode;
   withLoader?: boolean;
   page?: string;
 }
-
-type Navigation = {
-  href: string;
-  heading: string;
-};
 
 const ENVIRONMENT = process.env.NODE_ENV;
 
@@ -52,7 +50,7 @@ export default function Layout({
   };
 
   function typeNavbar({ type }: { type?: string }) {
-    let navbar: Navigation[] = [];
+    let navbar: NavigationHeader[] = [];
     if (type === "home") {
       navbar = [
         {
