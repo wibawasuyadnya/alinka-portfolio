@@ -17,7 +17,9 @@ export default function Section() {
       <section id="gallery">
         <Gallery />
       </section>
-      <Post />
+      <section id="latest-post">
+        <Post />
+      </section>
       <section id="contact">
         <Contact />
       </section>

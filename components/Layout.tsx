@@ -65,6 +65,10 @@ export default function Layout({
           heading: "Contact",
           href: "#contact",
         },
+        {
+          heading: "Blog",
+          href: "#latest-post",
+        },
       ];
     }
     if (type === "art") {

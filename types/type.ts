@@ -1,3 +1,4 @@
+
 // global wysiwyg types
 export type WysiwygEditorType = {
     text: string;
@@ -144,7 +145,7 @@ export type LoadingType = {
 export type NavigationHeader = {
     href: string;
     heading: string;
-  };
+};
 
 // dynamic header data types 
 export type DynamicHeaderType = {
@@ -157,7 +158,11 @@ export type DynamicHeaderType = {
 }
 
 // posts list data types
-
 export type PostsListType = {
-    
+    id: string;
+    content: string;
+    tags: string[];
+    title: string;
+    slug: string;
+    publishedAt: Date;
 }

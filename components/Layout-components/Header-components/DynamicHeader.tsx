@@ -1,5 +1,5 @@
 import { DynamicHeaderType } from "@/types/type";
-import React, { Fragment } from "react";
+import React, { Fragment, MouseEvent } from "react";
 import StaticHeader from "./DynamicHeader-components/StaticHeader";
 import StickyHeader from "./DynamicHeader-components/StickyHeader";
 

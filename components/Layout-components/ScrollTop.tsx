@@ -14,7 +14,6 @@ const ScrollToTopContainerVariants: Variants = {
 };
 
 const ScrollTopButton = () => {
-  const { scrollYProgress } = useScroll();
   const controls = useAnimationControls();
 
   useEffect(() => {
