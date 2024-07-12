@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, createContext, useEffect } from "react";
 
 interface ThemeContextType {
   theme: string;
@@ -7,31 +7,29 @@ interface ThemeContextType {
 }
 
 interface ThemeProviderType {
-  children: any;
+  children: React.ReactNode;
 }
 
 const defaultValue: ThemeContextType = {
   theme: "light",
   changeTheme: () => {},
 };
+
 export const ThemeContext = createContext<ThemeContextType>(defaultValue);
 
 export const ThemeProvider = ({ children }: ThemeProviderType) => {
-  // state for defining light and dark theme
-  const [theme, setTheme] = useState<string>("light");
-  const [mounted, setMounted] = useState<boolean>(false);
-
-  useEffect(() => {
-    setMounted(true);
-    const storedTheme = localStorage.getItem("theme") || "light";
-    setTheme(storedTheme);
-  }, []);
-
-  if (!mounted) return null;
+  const [theme, setTheme] = useState<string>(() => {
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("theme") || "light";
+    }
+    return "light";
+  });
 
   const changeTheme = (theme: string) => {
     setTheme(theme);
-    localStorage.setItem("theme", theme);
+    if (typeof window !== "undefined") {
+      localStorage.setItem("theme", theme);
+    }
   };
 
   return (

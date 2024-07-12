@@ -37,23 +37,6 @@ export default function Header({ title, description, navbar }: HeaderType) {
 
   return (
     <Fragment>
-      <Head>
-        <title>{title ? title : "Alinka Painter Portfolio"}</title>
-        <meta
-          name="description"
-          content={
-            description ? description : "Hai this is my personal portfolio"
-          }
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:title" content="Alinka Portfolio Website" />
-        <meta
-          property="og:url"
-          content="https://alinka-portfolio.vercel.app/"
-        />
-        <link rel="icon" href="/app/favicon.ico" />
-        <link rel="shortcut icon" href="/app/favicon.ico" type="image/x-icon" />
-      </Head>
       {/* sticky header hide & show */}
       <DynamicHeader
         show={showStickyHeader}

@@ -1,5 +1,5 @@
 "use client";
-import React, { ReactNode, useEffect, MouseEvent } from "react";
+import React, { ReactNode, useEffect, MouseEvent, Fragment } from "react";
 import Header from "./Layout-components/Header";
 import { useAppSelector } from "@/redux/hook";
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
@@ -7,14 +7,14 @@ import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis";
-import { useLanguage } from "@/context/LanguageContext";
-import { Language } from "@/types/enum";
 import { NavigationHeader } from "@/types/type";
+import Head from "next/head";
 
 interface LayoutType {
   children?: ReactNode;
   withLoader?: boolean;
   page?: string;
+  metadata?: any;
 }
 
 const ENVIRONMENT = process.env.NODE_ENV;
@@ -38,10 +38,17 @@ export default function Layout({
   children,
   withLoader = false,
   page,
+  metadata,
 }: LayoutType) {
   const isLoading = useAppSelector((state) => state.global.loading);
 
-  isLoading ? disableBodyScroll(document) : enableBodyScroll(document);
+  useEffect(() => {
+    if (isLoading) {
+      disableBodyScroll(document.body);
+    } else {
+      enableBodyScroll(document.body);
+    }
+  }, [isLoading]);
 
   const handleContextMenu = (event: MouseEvent) => {
     if (ENVIRONMENT === "production") {
@@ -81,6 +88,22 @@ export default function Layout({
 
   return (
     <ReactLenis root>
+      <Head>
+        {metadata && (
+          <Fragment>
+            <title>{metadata.title}</title>
+            <meta name="description" content={metadata.description} />
+            <meta property="og:title" content={metadata.title} />
+            <meta property="og:description" content={metadata.description} />
+            {metadata.images && (
+              <meta
+                property="og:image"
+                content={metadata.images[0].url}
+              />
+            )}
+          </Fragment>
+        )}
+      </Head>
       <div className={`m-0`} onContextMenu={handleContextMenu}>
         <Header navbar={homeNavbar} />
         {withLoader ? <LayoutLoader loading={isLoading} /> : null}

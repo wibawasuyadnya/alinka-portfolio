@@ -1,8 +1,13 @@
 import React, { Fragment } from "react";
-import useChangeTheme from "@/hooks/useChangeTheme";
+import { useTheme } from "@/hooks/useTheme";
 
 export default function ThemeToggleIcon() {
-  const { theme, toggleTheme } = useChangeTheme();
+  const { theme, changeTheme } = useTheme();
+
+  const toggleTheme = () => {
+    changeTheme(theme === "light" ? "dark" : "light");
+  };
+  
   return (
     <label className="swap swap-rotate">
       {/* This hidden checkbox controls the state */}

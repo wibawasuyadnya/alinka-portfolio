@@ -1,11 +1,14 @@
-import { AnyAction, createSlice } from "@reduxjs/toolkit";
+import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
 
 interface GlobalSliceInitialState {
-    loading: boolean;
+  loading: boolean;
+  theme: string;
+
 }
 
 export const initialState: GlobalSliceInitialState = {
   loading: false,
+  theme: typeof window !== "undefined" ? localStorage.getItem("theme") || "light" : "light",
 };
 
 const globalSlice = createSlice({
@@ -17,9 +20,15 @@ const globalSlice = createSlice({
     setLoading: (state, action) => {
       state.loading = action.payload;
     },
+    setTheme: (state, action: PayloadAction<string>) => {
+      state.theme = action.payload;
+      if (typeof window !== "undefined") {
+        localStorage.setItem("theme", action.payload);
+      }
+    },
   },
 });
 
-export const { setLoading } = globalSlice.actions;
+export const { setLoading, setTheme } = globalSlice.actions;
 
 export default globalSlice.reducer;
