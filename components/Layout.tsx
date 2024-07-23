@@ -8,20 +8,11 @@ import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { NavigationHeader } from "@/types/type";
-import Head from "next/head";
-import { Metadata } from "next";
 
 interface LayoutType {
   children?: ReactNode;
   withLoader?: boolean;
   page?: string;
-  metadata?: {
-    title: string;
-    description: string;
-    images?: {
-      url: string[];
-    };
-  };
 }
 
 const ENVIRONMENT = process.env.NODE_ENV;
@@ -45,7 +36,6 @@ export default function Layout({
   children,
   withLoader = false,
   page,
-  metadata,
 }: LayoutType) {
   const isLoading = useAppSelector((state) => state.global.loading);
 
@@ -95,24 +85,6 @@ export default function Layout({
 
   return (
     <ReactLenis root>
-      <Head>
-        <title>{metadata?.title || "Default Title"}</title>
-        <meta
-          name="description"
-          content={metadata?.description || "Default description"}
-        />
-        <meta
-          property="og:title"
-          content={metadata?.title || "Default OG Title"}
-        />
-        <meta
-          property="og:description"
-          content={metadata?.description || "Default OG Description"}
-        />
-        {metadata?.images?.[0]?.url && (
-          <meta property="og:image" content={metadata.images[0].url} />
-        )}
-      </Head>
       <div className={`m-0`} onContextMenu={handleContextMenu}>
         <Header navbar={homeNavbar} />
         {withLoader ? <LayoutLoader loading={isLoading} /> : null}
