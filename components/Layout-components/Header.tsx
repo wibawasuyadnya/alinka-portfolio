@@ -1,5 +1,4 @@
 "use client";
-import Head from "next/head";
 import React, { Fragment, useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import DynamicHeader from "./Header-components/DynamicHeader";

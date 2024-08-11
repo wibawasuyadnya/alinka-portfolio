@@ -21,7 +21,6 @@ export const metadata: Metadata = {
     canonical: "./",
   },
 };
-
 export default function RootLayout({
   children,
 }: Readonly<{

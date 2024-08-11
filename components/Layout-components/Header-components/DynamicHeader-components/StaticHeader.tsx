@@ -3,6 +3,7 @@ import Link from "next/link";
 import ThemeToggleIcon from "../ThemeToggleIcon";
 import { DynamicHeaderType } from "@/types/type";
 import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
+import LanguageToggleIcon from "../LanguageToggleIcon";
 
 const StaticHeader = ({ onClick, navbar }: DynamicHeaderType) => {
   return (
@@ -30,8 +31,10 @@ const StaticHeader = ({ onClick, navbar }: DynamicHeaderType) => {
               );
             })}
         </nav>
-        <div>
+        <div className="flex flex-row gap-3">
           <ThemeToggleIcon />
+          <div className="divider lg:divider-horizontal" />
+          <LanguageToggleIcon />
         </div>
       </div>
     </div>
