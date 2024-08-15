@@ -1,14 +1,19 @@
-"use client";
 import React from "react";
 import { DefaultPageDataType } from "@/types/type";
 import { useSectionData } from "@/hooks/data/useSectionData";
+import { usePostsData } from "@/hooks/data/usePostsData";
+import { useLanguage } from "@/hooks/useLanguage";
 
-function Post() {
+export default async function Post() {
+  const { language } = useLanguage();
+  const { data: posts } = await usePostsData(language);
   const { data: postSection } = useSectionData("post");
 
-  const postData: DefaultPageDataType | null = postSection 
-  ? { description: postSection.description, heading: postSection.heading 
-  } : null;
+  console.log(posts)
+
+  const postData: DefaultPageDataType | null = postSection
+    ? { description: postSection.description, heading: postSection.heading }
+    : null;
 
   return (
     <div className={"py-16 px-10 bg-base-100 space-y-5"}>
@@ -22,4 +27,3 @@ function Post() {
     </div>
   );
 }
-export default Post;

@@ -158,7 +158,7 @@ export type DynamicHeaderType = {
 }
 
 // posts list data types
-export type PostsListType = {
+export type PostsType = {
     id: string;
     content: string;
     tags: string[];
@@ -166,3 +166,6 @@ export type PostsListType = {
     slug: string;
     publishedAt: Date;
 }
+
+// images data types 
+export type PostsListType = PostsType[];
