@@ -1,19 +1,32 @@
-"use client"
+"use client";
 import { GET } from "@/app/api/_get/posts";
+import { useAppDispatch } from "@/redux/hook";
 import { Language } from "@/types/enum";
+import { setLoading } from "@/redux/slices/globalSlice";
 import { PostsListType } from "@/types/type";
+import { useEffect, useState } from "react";
 
-type PostsDataReturnType = {
-    data: PostsListType | null;
-    error: Error | null;
-};
+export const usePostsData = ({ language }: { language: Language }) => {
+  const [data, setData] = useState<PostsListType | null>(null);
+  const [error, setError] = useState<string | null>(null);
+  const dispatch = useAppDispatch();
 
-export const usePostsData = async (language: Language): Promise<PostsDataReturnType> => {
+  const getPostListData = async () => {
+    dispatch(setLoading(true));
     try {
-        const { posts } = await GET({ language });
-        return { data: posts, error: null };
-    } catch (error) {
-        console.error('Failed to fetch posts:', error);
-        return { data: null, error: error as Error };
+      const res = await GET({ language });
+      setData(res.posts);
+    } catch (err) {
+      console.error(err);
+      setError("Failed to fetch gallery data");
+    } finally {
+      dispatch(setLoading(false));
     }
+  };
+
+  useEffect(() => {
+    if (!data) getPostListData();
+}, [data]);
+
+return { data, error };
 };

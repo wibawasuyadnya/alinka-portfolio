@@ -164,7 +164,7 @@ export type PostsType = {
     tags: string[];
     title: string;
     slug: string;
-    publishedAt: Date;
+    publishedAt: string;
 }
 
 // images data types 

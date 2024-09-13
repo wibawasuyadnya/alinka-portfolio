@@ -1,15 +1,15 @@
+"use client";
 import React from "react";
 import { DefaultPageDataType } from "@/types/type";
 import { useSectionData } from "@/hooks/data/useSectionData";
 import { usePostsData } from "@/hooks/data/usePostsData";
 import { useLanguage } from "@/hooks/useLanguage";
+import PostsList from "./Posts-components/PostsList";
 
-export default async function Post() {
+function Posts() {
   const { language } = useLanguage();
-  const { data: posts } = await usePostsData(language);
+  const { data: posts } = usePostsData({ language });
   const { data: postSection } = useSectionData("post");
-
-  console.log(posts)
 
   const postData: DefaultPageDataType | null = postSection
     ? { description: postSection.description, heading: postSection.heading }
@@ -24,6 +24,9 @@ export default async function Post() {
       >
         {postData && postData.heading}
       </h2>
+      <PostsList data={posts}/>
     </div>
   );
 }
+
+export default Posts;
