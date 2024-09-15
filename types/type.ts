@@ -19,7 +19,7 @@ export type SectionType = {
     id: string;
     description: string;
     heading: string;
-    slug: string;
+    slug: string; 
     images: {
         url: string;
         id: string;
