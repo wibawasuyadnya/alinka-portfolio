@@ -28,7 +28,7 @@ function PostCard({ data }: PostCardProps) {
             {shortenStr({
               text: data.content,
               startLength: 73,
-              displayLength: 30,
+              displayLength: 30, 
             })}
           </p>
           {data.tags.length > 0 && (
