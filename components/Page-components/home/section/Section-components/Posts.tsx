@@ -1,10 +1,10 @@
 "use client";
 import React from "react";
-import { DefaultPageDataType } from "@/types/type";
-import { useSectionData } from "@/hooks/data/useSectionData";
-import { usePostsData } from "@/hooks/data/usePostsData";
 import { useLanguage } from "@/hooks/useLanguage";
-import PostsList from "./Posts-components/PostsList";
+import { DefaultPageDataType } from "@/types/type";
+import { usePostsData } from "@/hooks/data/usePostsData";
+import { useSectionData } from "@/hooks/data/useSectionData";
+import PostsList from "@/components/Page-components/blog/Section-components/PostList";
 
 function Posts() {
   const { language } = useLanguage();

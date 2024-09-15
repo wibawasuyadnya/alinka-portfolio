@@ -44,28 +44,28 @@ export default function Slider({ data }: SliderItemType) {
         }}
         spaceBetween={1}
       >
-        {data && data.length > 0
-          ? data.map((slider, idx) => {
-              return (
-                <SwiperSlide key={idx} className="m-0">
-                  <div className="flex flex-row justify-center items-center">
-                    <Image
-                      src={slider.image.url}
-                      alt={`Banner ${slider.name}`}
-                      sizes="100vw"
-                      width={0}
-                      height={0}
-                      style={{
-                        width: "100%",
-                        height: "100vh",
-                        objectFit: "cover",
-                      }}
-                    />
-                  </div>
-                </SwiperSlide>
-              );
-            })
-          : null}
+        {data &&
+          data.length > 0 &&
+          data.map((slider, idx) => {
+            return (
+              <SwiperSlide key={idx} className="m-0">
+                <div className="flex flex-row justify-center items-center">
+                  <Image
+                    src={slider.image.url}
+                    alt={`Banner ${slider.name}`}
+                    sizes="100vw"
+                    width={0}
+                    height={0}
+                    style={{
+                      width: "100%",
+                      height: "101vh",
+                      objectFit: "cover",
+                    }}
+                  />
+                </div>
+              </SwiperSlide>
+            );
+          })}
       </Swiper>
       <div className="absolute bottom-0 swiper-pagination"></div>
     </div>

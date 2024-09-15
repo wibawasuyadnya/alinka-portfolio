@@ -10,33 +10,33 @@ export default function LanguageToggleIcon() {
     changeLanguage(language === Language.EN ? Language.ID : Language.EN);
   };
 
-  return ( 
-        <label className="swap swap-flip p-0 m-0">
-          {/* This hidden checkbox controls the state */}
-          <input
-            type="checkbox"
-            className="language-controller"
-            onChange={toggleLanguage}
-            checked={language === "id"}
-          />
-          <div className="swap-off fill-current w-8 h-6">
-            <Image
-              width={0}
-              height={0}
-              src={"/assets/images/Flag_Id_Medium.svg"}
-              alt={"language indonesia"}
-              className="w-full h-full object-cover rounded-md"
-            />
-          </div>
-          <div className="swap-on fill-current w-8 h-6">
-            <Image
-              width={0}
-              height={0}
-              src={"/assets/images/Flag_Uk_Medium.svg"}
-              alt={"language english"}
-              className="w-full h-full object-cover rounded-md"
-            />
-          </div>
-        </label>
+  return (
+    <label className="swap swap-flip p-0 m-0">
+      {/* This hidden checkbox controls the state */}
+      <input
+        type="checkbox"
+        className="language-controller"
+        onChange={toggleLanguage}
+        checked={language === "id"}
+      />
+      <div className="swap-off fill-current w-8 h-6">
+        <Image
+          width={0}
+          height={0}
+          src={"/assets/images/Flag_Uk_Medium.svg"}
+          alt={"language english"}
+          className="w-full h-full object-cover rounded-md"
+        />
+      </div>
+      <div className="swap-on fill-current w-8 h-6">
+        <Image
+          width={0}
+          height={0}
+          src={"/assets/images/Flag_Id_Medium.svg"}
+          alt={"language indonesia"}
+          className="w-full h-full object-cover rounded-md"
+        />
+      </div>
+    </label>
   );
 }

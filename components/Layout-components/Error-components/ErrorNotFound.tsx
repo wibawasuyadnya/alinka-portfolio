@@ -41,11 +41,11 @@ export default function ErrorNotFound() {
           backgroundSize: "cover",
           backgroundPosition: "center center",
           width: "100%",
-          height: "100vh",
+          height: "101vh",
         }}
       >
         <div className="absolute inset-0 bg-black/45"></div>
-        <div className="text-base-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 tracking-wide h-fit w-fit z-10">
+        <div className="text-base-200 flex flex-col justify-center items-center absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 tracking-wide h-screen w-fit z-10">
           {notFoundData && (
             <HtmlContent
               attribute={{
