@@ -10,6 +10,14 @@ const fetchPostList = gql`
   query Posts($language: Locale!) {
     posts(locales: [$language]) {
       id
+      coverImage {
+        url
+      }
+      createdBy {
+        name
+        picture
+        isActive
+      }
       content
       tags
       title

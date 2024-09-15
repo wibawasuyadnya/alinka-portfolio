@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import { PostsListType } from "@/types/type";
 import { Origami } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";
+import PostCard from "./PostList-Components/PostCard";
 
 interface PostsListPropsType {
   data: PostsListType | null;
@@ -15,7 +16,7 @@ export default function PostsList({ data, length }: PostsListPropsType) {
   const router = useRouter();
   const { language } = useLanguage();
   const breakpointColumnsObj = {
-    default: 4,
+    default: 3,
     1100: 3,
     700: 2,
     500: 1,
@@ -25,8 +26,6 @@ export default function PostsList({ data, length }: PostsListPropsType) {
 
   const postsToDisplay = length ? data.slice(0, length) : data;
 
-  console.log(language);
-
   return data && data.length > 0 ? (
     <div>
       <Masonry
@@ -35,12 +34,7 @@ export default function PostsList({ data, length }: PostsListPropsType) {
         columnClassName="my-masonry-grid_column"
       >
         {postsToDisplay.map((post) => {
-          return (
-            <div key={post.id} className="masonry-item">
-              <div>{post.title}</div>
-              <div>{post.publishedAt}</div>
-            </div>
-          );
+          return <PostCard key={post.id} data={post} />;
         })}
       </Masonry>
     </div>
