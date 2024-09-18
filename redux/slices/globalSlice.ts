@@ -1,4 +1,5 @@
-import { AnyAction, createSlice, PayloadAction } from "@reduxjs/toolkit";
+"use client";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { Language } from "@/types/enum";
 
 interface GlobalSliceInitialState {
@@ -7,27 +8,27 @@ interface GlobalSliceInitialState {
   language: Language;
 }
 
-const getInitialTheme = (): string => {
-  if (typeof window !== "undefined") {
-    return localStorage.getItem("theme") || "light";
+const getSystemTheme = () => {
+  if (typeof window !== "undefined" && window.matchMedia) {
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
   }
   return "light";
 };
 
-const getInitialLanguage = (): Language => {
-  if (typeof window !== "undefined") {
-    const preferredLanguage = navigator.language.split("-")[0] as Language;
-    if (Object.values(Language).includes(preferredLanguage)) {
-      return preferredLanguage;
-    }
-  }
-  return Language.ID;
-};
-
-export const initialState: GlobalSliceInitialState = {
+const initialState: GlobalSliceInitialState = {
   loading: false,
-  theme: getInitialTheme(),
-  language: getInitialLanguage(),
+  theme: "light",
+  language: (() => {
+    if (typeof window !== "undefined") {
+      const preferredLanguage = navigator.language.split("-")[0] as Language;
+      if (Object.values(Language).includes(preferredLanguage)) {
+        return preferredLanguage;
+      }
+    }
+    return Language.ID;
+  })(),
 };
 
 const globalSlice = createSlice({
@@ -46,9 +47,24 @@ const globalSlice = createSlice({
     setLanguage: (state, action: PayloadAction<Language>) => {
       state.language = action.payload;
     },
+    updateThemeFromLocalStorage: (state) => {
+      if (typeof window !== "undefined") {
+        const storedTheme = localStorage.getItem("theme");
+        if (storedTheme) {
+          state.theme = storedTheme;
+        } else {
+          state.theme = getSystemTheme();
+        }
+      }
+    },
   },
 });
 
-export const { setLoading, setTheme, setLanguage } = globalSlice.actions;
+export const {
+  setLoading,
+  setTheme,
+  setLanguage,
+  updateThemeFromLocalStorage,
+} = globalSlice.actions;
 
 export default globalSlice.reducer;

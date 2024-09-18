@@ -1,13 +1,20 @@
 "use client";
-import React, { ReactNode, useEffect, MouseEvent, Fragment } from "react";
+import React, {
+  ReactNode,
+  useEffect,
+  MouseEvent,
+  Fragment,
+  useState,
+} from "react";
 import Header from "./Layout-components/Header";
-import { useAppSelector } from "@/redux/hook";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
 import { ReactLenis } from "@studio-freight/react-lenis";
 import { NavigationHeader } from "@/types/type";
+import { setTheme } from "@/redux/slices/globalSlice";
 
 interface LayoutType {
   children?: ReactNode;
@@ -47,6 +54,7 @@ export default function Layout({
     }
   }, [isLoading]);
 
+
   const handleContextMenu = (event: MouseEvent) => {
     if (ENVIRONMENT === "production") {
       event.preventDefault();
@@ -77,6 +85,14 @@ export default function Layout({
     }
     if (type === "art") {
       navbar = [];
+    }
+    if (type === "blog") {
+      navbar = [
+        {
+          heading: "Home",
+          href: "/",
+        },
+      ];
     }
     return navbar;
   }

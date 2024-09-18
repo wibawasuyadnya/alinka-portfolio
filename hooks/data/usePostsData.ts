@@ -15,7 +15,6 @@ export const usePostsData = ({ language }: { language: Language }) => {
     dispatch(setLoading(true));
     try {
       const res = await GET({ language });
-      console.log(res);
       setData(res.posts);
     } catch (err) {
       console.error(err);

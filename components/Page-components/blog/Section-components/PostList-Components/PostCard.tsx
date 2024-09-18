@@ -1,9 +1,9 @@
-import { PostsType } from "@/types/type";
+import { PostType } from "@/types/type";
 import { shortenStr } from "@/utils/shortenString";
 import React, { Fragment } from "react";
 
 interface PostCardProps {
-  data: PostsType;
+  data: PostType;
 }
 
 function PostCard({ data }: PostCardProps) {
@@ -13,7 +13,7 @@ function PostCard({ data }: PostCardProps) {
         " p-4 rounded-lg w-full border border-solid border-base hover:shadow-base hover:shadow-[0px_0px_20px_1px_rgba(0,0,0,0.08)]"
       }
     >
-      <a href={"#"} target="_blank">
+      <a href={`/blog/${data.id}`} target="_blank">
         <div className="space-y-3 w-full">
           <div className="flex flex-row gap-3 w-full">
             <img

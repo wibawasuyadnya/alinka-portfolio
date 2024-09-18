@@ -4,6 +4,7 @@ import "@/styles/globals.css";
 import { Providers } from "@/redux/provider";
 import ScrollTopButton from "@/components/Layout-components/ScrollTop";
 import ThemeWrapper from "@/components/Layout-components/ThemeWrapper";
+import ThemeInitializer from "@/components/Layout-components/ThemeInitializer";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
 
@@ -30,6 +31,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={public_sans.className}>
         <Providers>
+          <ThemeInitializer />
           <ThemeWrapper>
             {children}
             <ScrollTopButton />

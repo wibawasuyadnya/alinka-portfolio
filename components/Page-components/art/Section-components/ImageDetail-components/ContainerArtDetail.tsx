@@ -1,6 +1,5 @@
 "use client";
 import React from "react";
-import Image from "next/image";
 import Link from "next/link";
 import { CircleX, ArrowRight, ArrowLeft, Fullscreen } from "lucide-react";
 import ImageFullScreen from "./FullScreen";
@@ -81,7 +80,4 @@ export default function ContainerArtDetail({
       </div>
     </div>
   );
-}
-function dayjs() {
-  throw new Error("Function not implemented.");
 }

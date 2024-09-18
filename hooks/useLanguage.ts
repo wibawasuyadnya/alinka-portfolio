@@ -1,3 +1,4 @@
+"use client";
 import { RootState } from "@/redux/store";
 import { setLanguage } from "@/redux/slices/globalSlice";
 import { Language } from "@/types/enum";

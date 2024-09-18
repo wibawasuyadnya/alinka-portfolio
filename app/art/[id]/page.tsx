@@ -8,7 +8,6 @@ interface Props {
 }
 
 export default async function ArtDetail({ params }: Props) {
-  console.log(params.id);
   return (
     <Layout page="art">
       <Section params={params} />
