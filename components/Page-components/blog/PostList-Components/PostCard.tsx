@@ -13,7 +13,7 @@ function PostCard({ data }: PostCardProps) {
   const { language } = useLanguage();
   const markdownContent = markdownToHtml(data.content);
   return (
-    <div
+    <div 
       className={
         " p-4 rounded-lg w-full border border-solid border-base hover:border-primary hover:shadow-base hover:shadow-[0px_0px_20px_1px_rgba(0,0,0,0.08)]"
       }
