@@ -22,7 +22,7 @@ function PostCard({ data }: PostCardProps) {
         <div className="space-y-3 w-full">
           <div className="flex flex-row gap-3 w-full">
             <img
-              className={
+              className={ 
                 "w-[150px] h-full rounded-lg border border-solid border-primary"
               }
               src={data.coverImage.url}
