@@ -7,11 +7,11 @@ import { PostType } from "@/types/type";
 import { useCallback, useEffect, useState } from "react";
 
 interface Props {
-  id: string;
+  slug: string;
   language: Language;
 }
 
-export const usePostDetailData = ({ id, language }: Props) => {
+export const usePostDetailData = ({ slug, language }: Props) => {
   const [data, setData] = useState<PostType | null>(null);
   const [error, setError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
@@ -19,7 +19,7 @@ export const usePostDetailData = ({ id, language }: Props) => {
   const getPostData = useCallback(async () => {
     dispatch(setLoading(true));
     try {
-      const res = await GET({ id, language });
+      const res = await GET({ slug, language });
       setData(res.post);
     } catch (err) {
       console.error(err);

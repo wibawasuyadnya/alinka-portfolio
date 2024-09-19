@@ -18,7 +18,7 @@ const getSystemTheme = () => {
 };
 
 const initialState: GlobalSliceInitialState = {
-  loading: false,
+  loading: true,
   theme: "light",
   language: (() => {
     if (typeof window !== "undefined") {

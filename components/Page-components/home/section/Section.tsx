@@ -1,3 +1,4 @@
+"use client";
 import React, { Fragment } from "react";
 import Hero from "./Section-components/Hero";
 import Quotation from "./Section-components/Quote";

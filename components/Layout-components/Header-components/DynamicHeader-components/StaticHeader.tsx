@@ -1,11 +1,11 @@
-import React from "react";
+import React, { Fragment } from "react";
 import Link from "next/link";
 import ThemeToggleIcon from "../ThemeToggleIcon";
 import { DynamicHeaderType } from "@/types/type";
 import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
 import LanguageToggleIcon from "../LanguageToggleIcon";
 
-const StaticHeader = ({ onClick, navbar }: DynamicHeaderType) => {
+const StaticHeader = ({ type, onClick, navbar }: DynamicHeaderType) => {
   return (
     <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-base-200">
       <div className={"w-full grid grid-cols-5 gap-5 place-items-center p-5"}>
@@ -21,13 +21,20 @@ const StaticHeader = ({ onClick, navbar }: DynamicHeaderType) => {
           {navbar &&
             navbar.map((item, idx) => {
               return (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  onClick={(e) => handleClickSmoothScrollToView(e, item.href)}
-                >
-                  {item.heading}
-                </Link>
+                <Fragment key={idx}>
+                  {type == "home" ? (
+                    <Link
+                      href={item.href}
+                      onClick={(e) =>
+                        handleClickSmoothScrollToView(e, item.href)
+                      }
+                    >
+                      {item.heading}
+                    </Link>
+                  ) : (
+                    <Link href={item.href}>{item.heading}</Link>
+                  )}
+                </Fragment>
               );
             })}
         </nav>

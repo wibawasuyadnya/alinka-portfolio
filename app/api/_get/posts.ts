@@ -15,8 +15,16 @@ const fetchPostList = gql`
       }
       createdBy {
         name
-        picture
         isActive
+      }
+      authors {
+        id
+        bio
+        name
+        intro
+        picture {
+          url
+        }
       }
       content
       tags

@@ -106,27 +106,6 @@ export type ImageDetailType = {
 // images data types
 export type ImagesDataType = ImageContentDataType[];
 
-// post data types
-export type PostContentType = {
-  authors: {
-    bio: string;
-    name: string;
-    id: string;
-    picture: {
-      url: string;
-    };
-  };
-  coverImage: {
-    url: string;
-  };
-  publishedAt: string;
-  date: string;
-  content: string;
-};
-
-// posts content data types
-export type PostsContentType = PostContentType[];
-
 // social data types
 export type SocialDataType = {
   id: string;
@@ -149,21 +128,30 @@ export type NavigationHeader = {
 export type DynamicHeaderType = {
   show?: boolean;
   onClick: () => void;
+  type?: string;
   navbar?: {
     href: string;
     heading: string;
   }[];
 };
 
-// posts list data types
-export type PostsType = {
+// posts list and detail data types
+export type PostType = {
   id: string;
   content: string;
-  createdBy: {
-    name: string;
-    picture: string;
+  createdBy?: {
     isActive: boolean;
+    name: string;
   };
+  authors?: {
+    id: string;
+    bio: string;
+    name: string;
+    intro: string;
+    picture: {
+      url: string;
+    };
+  }[];
   tags: string[];
   title: string;
   slug: string;
@@ -174,4 +162,4 @@ export type PostsType = {
 };
 
 // images data types
-export type PostsListType = PostsType[];
+export type PostsListType = PostType[];

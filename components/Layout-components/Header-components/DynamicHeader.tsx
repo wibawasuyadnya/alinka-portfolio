@@ -7,11 +7,12 @@ export default function DynamicHeader({
   show,
   navbar,
   onClick,
+  type,
 }: DynamicHeaderType) {
   return (
     <Fragment>
-      <StickyHeader show={show} onClick={onClick} navbar={navbar} />
-      <StaticHeader onClick={onClick} navbar={navbar} />
+      <StickyHeader type={type} show={show} onClick={onClick} navbar={navbar} />
+      <StaticHeader type={type} onClick={onClick} navbar={navbar} />
     </Fragment>
   );
 }

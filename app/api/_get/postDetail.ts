@@ -7,16 +7,23 @@ import { Language } from "@/types/enum";
  * GraphQL query to fetch image detail
  */
 const fetchPostDetail = gql`
-  query Post($id: ID!, $language: Locale!) {
-    post(locales: [$language], where: { id: $id }) {
+  query Post($slug: String!, $language: Locale!) {
+    post(locales: [$language], where: { slug: $slug }) {
       id
       coverImage {
         url
       }
       createdBy {
-        name
-        picture
         isActive
+      }
+      authors {
+        id 
+        bio
+        name
+        intro
+        picture {
+          url
+        }
       }
       content
       tags
@@ -32,15 +39,15 @@ const fetchPostDetail = gql`
 
 type PostDetail = {
   language: Language;
-  id: string;
+  slug: string;
 };
 
 export const GET = async ({
   language,
-  id,
+  slug,
 }: PostDetail): Promise<{ post: PostType }> => {
   try {
-    const variables = { language, id };
+    const variables = { language, slug };
     const result = await request<{ post: PostType }>(
       gqlKey,
       fetchPostDetail,

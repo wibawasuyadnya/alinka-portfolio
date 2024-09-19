@@ -4,7 +4,7 @@ import { useLanguage } from "@/hooks/useLanguage";
 import { DefaultPageDataType } from "@/types/type";
 import { usePostsData } from "@/hooks/data/usePostsData";
 import { useSectionData } from "@/hooks/data/useSectionData";
-import PostsList from "@/components/Page-components/blog/Section-components/PostList";
+import PostsList from "@/components/Page-components/blog/PostList";
 
 function Posts() {
   const { language } = useLanguage();

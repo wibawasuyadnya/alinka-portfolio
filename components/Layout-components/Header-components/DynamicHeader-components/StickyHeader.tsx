@@ -1,5 +1,5 @@
 "use client";
-import React, { MouseEvent } from "react";
+import React, { Fragment, MouseEvent } from "react";
 import Link from "next/link";
 import ThemeToggleIcon from "../ThemeToggleIcon";
 import LanguageToggleIcon from "../LanguageToggleIcon";
@@ -7,7 +7,7 @@ import { DynamicHeaderType } from "@/types/type";
 import { motion } from "framer-motion";
 import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
 
-const StickyHeader = ({ show, navbar, onClick }: DynamicHeaderType) => {
+const StickyHeader = ({ type, show, navbar, onClick }: DynamicHeaderType) => {
   return (
     <motion.div
       className={`top-0 navbar sticky z-50 text-white h-fit mt-[-100px]`}
@@ -27,13 +27,20 @@ const StickyHeader = ({ show, navbar, onClick }: DynamicHeaderType) => {
           {navbar &&
             navbar.map((item, idx) => {
               return (
-                <Link
-                  key={idx}
-                  href={item.href}
-                  onClick={(e) => handleClickSmoothScrollToView(e, item.href)}
-                >
-                  {item.heading}
-                </Link>
+                <Fragment key={idx}>
+                  {type == "home" ? (
+                    <Link
+                      href={item.href}
+                      onClick={(e) =>
+                        handleClickSmoothScrollToView(e, item.href)
+                      }
+                    >
+                      {item.heading}
+                    </Link>
+                  ) : (
+                    <Link href={item.href}>{item.heading}</Link>
+                  )}
+                </Fragment>
               );
             })}
         </nav>

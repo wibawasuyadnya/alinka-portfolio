@@ -12,7 +12,7 @@ import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
 import Footer from "./Layout-components/Footer";
-import { ReactLenis } from "@studio-freight/react-lenis";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { NavigationHeader } from "@/types/type";
 import { setTheme } from "@/redux/slices/globalSlice";
 
@@ -35,7 +35,6 @@ const LayoutLoader = ({ loading }: LoadingType) => {
       </div>
     );
   }
-
   return null;
 };
 
@@ -46,14 +45,29 @@ export default function Layout({
 }: LayoutType) {
   const isLoading = useAppSelector((state) => state.global.loading);
 
-  useEffect(() => {
-    if (isLoading) {
-      disableBodyScroll(document.body);
-    } else {
-      enableBodyScroll(document.body);
+  // lenis scroll
+  const lenis = useLenis();
+  const toggleScrollLock = () => {
+    const targetElement = document.body;
+    if (lenis) {
+      if (isLoading) {
+        lenis.stop();
+        disableBodyScroll(targetElement);
+      } else {
+        lenis.start();
+        enableBodyScroll(targetElement);
+      }
     }
-  }, [isLoading]);
+  };
 
+  useEffect(() => {
+    toggleScrollLock();
+    return () => {
+      if (lenis) {
+        lenis.start();
+      }
+    };
+  }, [isLoading, lenis]);
 
   const handleContextMenu = (event: MouseEvent) => {
     if (ENVIRONMENT === "production") {
@@ -90,7 +104,11 @@ export default function Layout({
       navbar = [
         {
           heading: "Home",
-          href: "/",
+          href: "",
+        },
+        {
+          heading: "blog",
+          href: "/blog",
         },
       ];
     }

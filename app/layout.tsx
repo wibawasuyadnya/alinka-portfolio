@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Public_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "@/redux/provider";
-import ScrollTopButton from "@/components/Layout-components/ScrollTop";
+import ScrollTopButton from "@/components/Layout-components/Scroll/ScrollTop";
 import ThemeWrapper from "@/components/Layout-components/ThemeWrapper";
 import ThemeInitializer from "@/components/Layout-components/ThemeInitializer";
 

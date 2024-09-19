@@ -13,7 +13,6 @@ interface PostsListPropsType {
 }
 
 export default function PostsList({ data, length }: PostsListPropsType) {
-  const router = useRouter();
   const { language } = useLanguage();
   const breakpointColumnsObj = {
     default: 3,

@@ -10,9 +10,10 @@ interface HeaderType {
     href: string;
     heading: string;
   }[];
+  page?: string;
 }
 
-export default function Header({ title, description, navbar }: HeaderType) {
+export default function Header({  title, description, navbar, page }: HeaderType) {
   const [showStickyHeader, setShowStickyHeader] = useState<boolean>(false);
   const [lastScrollY, setLastScrollY] = useState<number>(0);
   const router = useRouter();
@@ -41,6 +42,7 @@ export default function Header({ title, description, navbar }: HeaderType) {
         show={showStickyHeader}
         onClick={() => router.push("/")}
         navbar={navbar}
+        type={page}
       />
     </Fragment>
   );
