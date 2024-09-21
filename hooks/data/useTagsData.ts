@@ -1,26 +1,25 @@
 "use client";
-import { GET } from "@/app/api/_get/postDetail";
-import { useAppDispatch } from "@/redux/hook";
 import { Language } from "@/types/enum";
+import { TagsListType } from "@/types/type";
+import { useAppDispatch } from "@/redux/hook";
+import { GET } from "@/app/api/_get/_posts/tags";
 import { setLoading } from "@/redux/slices/globalSlice";
-import { PostType } from "@/types/type";
 import { useCallback, useEffect, useState } from "react";
 
 interface Props {
-  slug: string | undefined;
   language: Language;
 }
 
-export const usePostDetailData = ({ slug, language }: Props) => {
-  const [data, setData] = useState<PostType | null>(null);
-  const [error, setError] = useState<string | null>(null);
+export const useTagsData = ({ language }: Props) => {
   const dispatch = useAppDispatch();
+  const [data, setData] = useState<TagsListType | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
-  const getPostData = useCallback(async () => {
+  const getTagsData = useCallback(async () => {
     dispatch(setLoading(true));
     try {
-      const res = await GET({ slug, language });
-      setData(res.post);
+      const res = await GET({ language });
+      setData(res.posts);
     } catch (err) {
       console.error(err);
       setError("Failed to fetch gallery data");
@@ -30,7 +29,7 @@ export const usePostDetailData = ({ slug, language }: Props) => {
   }, [language]);
 
   useEffect(() => {
-    getPostData();
+    getTagsData();
   }, [language]);
 
   return { data, error };

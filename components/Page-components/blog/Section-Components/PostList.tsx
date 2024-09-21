@@ -1,7 +1,6 @@
 "use client";
 import Masonry from "react-masonry-css";
-import React, { Fragment } from "react";
-import { useRouter } from "next/navigation";
+import React from "react";
 import { PostsListType } from "@/types/type";
 import { Origami } from "lucide-react";
 import { useLanguage } from "@/hooks/useLanguage";

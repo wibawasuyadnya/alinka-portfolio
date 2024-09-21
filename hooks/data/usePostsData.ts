@@ -6,7 +6,15 @@ import { setLoading } from "@/redux/slices/globalSlice";
 import { PostsListType } from "@/types/type";
 import { useCallback, useEffect, useState } from "react";
 
-export const usePostsData = ({ language }: { language: Language }) => {
+export const usePostsData = ({
+  language,
+  search,
+  tags,
+}: {
+  language: Language;
+  search?: string;
+  tags?: string;
+}) => {
   const [data, setData] = useState<PostsListType | null>(null);
   const [error, setError] = useState<string | null>(null);
   const dispatch = useAppDispatch();
@@ -14,7 +22,7 @@ export const usePostsData = ({ language }: { language: Language }) => {
   const getPostListData = useCallback(async () => {
     dispatch(setLoading(true));
     try {
-      const res = await GET({ language });
+      const res = await GET({ language, search, tags });
       setData(res.posts);
     } catch (err) {
       console.error(err);
@@ -22,11 +30,11 @@ export const usePostsData = ({ language }: { language: Language }) => {
     } finally {
       dispatch(setLoading(false));
     }
-  }, [language]);
+  }, [language, search]);
 
   useEffect(() => {
-      getPostListData();
-  }, [language]);
+    getPostListData();
+  }, []);
 
   return { data, error };
 };

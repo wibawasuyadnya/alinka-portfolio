@@ -10,20 +10,20 @@ import { usePostDetailData } from "@/hooks/data/usePostDetailData";
 import { useRouter } from "next/navigation";
 
 interface Props {
-  params: {
-    slug: string;
+  params?: {
+    slug: string | undefined;
   };
   language: Language;
 }
 
 function PostDetail({ params, language }: Props) {
-  const { markdownToHtml } = require("ts-markdown-parser");
-  const { slug } = params;
+  const slug = params?.slug;
   const router = useRouter();
+  const { markdownToHtml } = require("ts-markdown-parser");
   const { data: post } = usePostDetailData({ slug, language });
   const { data: posts } = usePostsData({ language });
 
-  if (!post || !posts) {
+  if (!post || !posts || !slug) {
     return "";
   }
 

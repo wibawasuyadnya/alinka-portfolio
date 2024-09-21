@@ -4,11 +4,45 @@ import { PostsListType } from "@/types/type";
 import { Language } from "@/types/enum";
 
 /**
- * GraphQL query to fetch image detail
+ * GraphQL query to fetch posts
  */
+
 const fetchPostList = gql`
-  query Posts($language: Locale!) {
-    posts(locales: [$language]) {
+  query Posts($language: Locale!, $search: String) {
+    posts(locales: [$language], where: { _search: $search }) {
+      id
+      coverImage {
+        url
+      }
+      createdBy {
+        name
+        isActive
+      }
+      authors {
+        id
+        bio
+        name
+        intro
+        picture {
+          url
+        }
+      }
+      content
+      tags
+      title
+      slug
+      publishedAt
+    }
+  }
+`;
+
+/**
+ * GraphQL query to fetch posts with tags
+ */
+
+const fetchPostListTags = gql`
+  query Posts($language: Locale!, $tags: String!, $search: String) {
+    posts(locales: [$language], where: { tags: [$tags], _search: $search }) {
       id
       coverImage {
         url
@@ -39,14 +73,23 @@ const fetchPostList = gql`
  */
 export const GET = async ({
   language,
+  tags,
+  search = "",
 }: {
   language: Language;
+  tags?: string;
+  search?: string;
 }): Promise<{ posts: PostsListType }> => {
   try {
-    const variables = { language };
+    const query =
+      tags && tags !== undefined ? fetchPostListTags : fetchPostList;
+    const variables =
+      tags && tags !== undefined
+        ? { language, tags, search }
+        : { language, search };
     const result = await request<{ posts: PostsListType }>(
       gqlKey,
-      fetchPostList,
+      query,
       variables
     );
     return result;

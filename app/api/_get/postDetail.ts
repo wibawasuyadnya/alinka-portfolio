@@ -39,7 +39,7 @@ const fetchPostDetail = gql`
 
 type PostDetail = {
   language: Language;
-  slug: string;
+  slug: string | undefined;
 };
 
 export const GET = async ({

@@ -6,6 +6,7 @@ interface GlobalSliceInitialState {
   loading: boolean;
   theme: string;
   language: Language;
+  tags: string[]; 
 }
 
 const getSystemTheme = () => {
@@ -19,6 +20,7 @@ const getSystemTheme = () => {
 
 const initialState: GlobalSliceInitialState = {
   loading: true,
+  tags: [],
   theme: "light",
   language: (() => {
     if (typeof window !== "undefined") {
@@ -47,6 +49,9 @@ const globalSlice = createSlice({
     setLanguage: (state, action: PayloadAction<Language>) => {
       state.language = action.payload;
     },
+    setTags: (state, action: PayloadAction<string[]>) => {
+      state.tags = action.payload;
+    },
     updateThemeFromLocalStorage: (state) => {
       if (typeof window !== "undefined") {
         const storedTheme = localStorage.getItem("theme");
@@ -61,8 +66,9 @@ const globalSlice = createSlice({
 });
 
 export const {
-  setLoading,
+  setTags,
   setTheme,
+  setLoading,
   setLanguage,
   updateThemeFromLocalStorage,
 } = globalSlice.actions;

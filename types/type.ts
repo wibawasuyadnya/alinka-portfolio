@@ -135,6 +135,12 @@ export type DynamicHeaderType = {
   }[];
 };
 
+export type TagsType = {
+  tags: string[];
+};
+
+export type TagsListType = TagsType[];
+
 // posts list and detail data types
 export type PostType = {
   id: string;
