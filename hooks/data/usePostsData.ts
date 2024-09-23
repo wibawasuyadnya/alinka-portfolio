@@ -33,7 +33,7 @@ export const usePostsData = ({
   }, [language, search, tags]);
 
   useEffect(() => {
-    getPostListData();
+    getPostListData(); 
   }, [language, search, tags]); 
 
   return { data, error };
