@@ -30,11 +30,11 @@ export const usePostsData = ({
     } finally {
       dispatch(setLoading(false));
     }
-  }, [language, search]);
+  }, [language, search, tags]);
 
   useEffect(() => {
     getPostListData();
-  }, []);
+  }, [language, search, tags]); 
 
   return { data, error };
 };
