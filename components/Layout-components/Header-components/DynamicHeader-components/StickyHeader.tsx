@@ -17,13 +17,13 @@ const StickyHeader = ({ type, show, navbar, onClick }: DynamicHeaderType) => {
     >
       <div
         className={
-          " mx-auto mt-1 rounded-2xl bg-primary w-5/6 grid grid-cols-5 gap-4 place-items-center p-5 shadow-xl shadow-[rgba(0,0,0,0.18)]"
+          " mx-auto mt-1 rounded-2xl bg-primary w-5/6 desktop:grid flex flex-row justify-between items-center desktop:grid-cols-5 gap-4 desktop:place-items-center p-5 shadow-xl shadow-[rgba(0,0,0,0.18)]"
         }
       >
         <h3 onClick={onClick} className="cursor-pointer font-semibold text-xl'">
           Alinka&apos;s Art Gallery
         </h3>
-        <nav className="col-span-3 flex flex-row gap-5 font-medium ">
+        <nav className="col-span-3 hidden desktop:flex flex-row gap-5 font-medium ">
           {navbar &&
             navbar.map((item, idx) => {
               return (
@@ -46,7 +46,7 @@ const StickyHeader = ({ type, show, navbar, onClick }: DynamicHeaderType) => {
         </nav>
         <div className="flex flex-row gap-3">
           <ThemeToggleIcon />
-          <div className="divider lg:divider-horizontal" />
+          <div className="divider hidden desktop:flex desktop:divider-horizontal" />
           <LanguageToggleIcon />
         </div>
       </div>

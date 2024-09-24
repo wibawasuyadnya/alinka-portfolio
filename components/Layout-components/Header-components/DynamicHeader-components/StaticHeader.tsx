@@ -1,14 +1,16 @@
-import React, { Fragment } from "react";
 import Link from "next/link";
+import React, { Fragment } from "react";
 import ThemeToggleIcon from "../ThemeToggleIcon";
 import { DynamicHeaderType } from "@/types/type";
-import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
 import LanguageToggleIcon from "../LanguageToggleIcon";
+import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
+import DrawerHeader from "../DrawerHeader";
 
 const StaticHeader = ({ type, onClick, navbar }: DynamicHeaderType) => {
   return (
     <div className="absolute backdrop-filter backdrop-blur-sm w-full z-10 text-base-200">
-      <div className={"w-full grid grid-cols-5 gap-5 place-items-center p-5"}>
+      <div className={"w-full flex justify-between desktop:grid desktop:grid-cols-5 gap-5 desktop:place-items-center p-5"}>
+        <DrawerHeader type={type} navbar={navbar} />
         <div className="text-base-200">
           <h3
             onClick={onClick}
@@ -17,7 +19,7 @@ const StaticHeader = ({ type, onClick, navbar }: DynamicHeaderType) => {
             Alinka
           </h3>
         </div>
-        <nav className={"col-span-3 flex flex-row gap-10 font-medium text-lg"}>
+        <nav className={"col-span-3 hidden desktop:flex flex-row gap-10 font-medium text-lg z-20"}>
           {navbar &&
             navbar.map((item, idx) => {
               return (
@@ -38,10 +40,10 @@ const StaticHeader = ({ type, onClick, navbar }: DynamicHeaderType) => {
               );
             })}
         </nav>
-        <div className="flex flex-row gap-3">
+        <div className="flex flex-row gap-2 desktop:gap-3">
           <ThemeToggleIcon />
-          <div className="divider lg:divider-horizontal" />
-          <LanguageToggleIcon />
+          <div className="divider hidden desktop:flex desktop:divider-horizontal" />
+          <div className="hidden desktop:block"><LanguageToggleIcon /></div>
         </div>
       </div>
     </div>

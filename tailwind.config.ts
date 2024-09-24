@@ -1,5 +1,4 @@
 import type { Config } from "tailwindcss";
-
 const defaultTheme = require('tailwindcss/defaultTheme');
 
 const config: Config = {
@@ -10,6 +9,11 @@ const config: Config = {
     "./context/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
+    screens: {
+      'phone': '640px',
+      'tablet': '1024px',
+      'desktop': '1280px',
+    },
     extend: {
       fontFamily: {
         'playfair': ['Playfair_Display', ...defaultTheme.fontFamily.serif],

@@ -1,7 +1,9 @@
 /* styles/pagination.css */
-
 /* Custom Style for pagination */
 /* Override Swiper styles with Tailwind classes */
+.swiper-pagination {
+  @apply z-[5] desktop:z-10;
+}
 .swiper-pagination-bullet {
   @apply bg-base-100 w-10 rounded-sm h-1;
 }

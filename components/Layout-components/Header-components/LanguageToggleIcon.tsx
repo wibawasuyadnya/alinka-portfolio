@@ -11,7 +11,7 @@ export default function LanguageToggleIcon() {
   };
 
   return (
-    <label className="swap swap-flip p-0 m-0">
+    <label className="swap swap-flip p-0 m-0 inline-grid">
       {/* This hidden checkbox controls the state */}
       <input
         type="checkbox"
@@ -19,22 +19,22 @@ export default function LanguageToggleIcon() {
         onChange={toggleLanguage}
         checked={language === "id"}
       />
-      <div className="swap-off fill-current w-8 h-6">
+      <div className="swap-off fill-current w-14 h-14 desktop:w-8 desktop:h-6">
         <Image
           width={0}
           height={0}
           src={"/assets/images/Flag_Uk_Medium.svg"}
           alt={"language english"}
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-full object-cover rounded-full desktop:rounded-md"
         />
       </div>
-      <div className="swap-on fill-current w-8 h-6">
+      <div className="swap-on fill-current w-14 h-14 desktop:w-8 desktop:h-6">
         <Image
           width={0}
           height={0}
           src={"/assets/images/Flag_Id_Medium.svg"}
           alt={"language indonesia"}
-          className="w-full h-full object-cover rounded-md"
+          className="w-full h-full object-cover rounded-full desktop:rounded-md"
         />
       </div>
     </label>

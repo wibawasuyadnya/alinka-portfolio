@@ -3,18 +3,15 @@ import React, {
   ReactNode,
   useEffect,
   MouseEvent,
-  Fragment,
-  useState,
 } from "react";
-import Header from "./Layout-components/Header";
-import { useAppDispatch, useAppSelector } from "@/redux/hook";
-import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import { LoadingType } from "@/types/type";
+import { useAppSelector } from "@/redux/hook";
 import Footer from "./Layout-components/Footer";
-import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
 import { NavigationHeader } from "@/types/type";
-import { setTheme } from "@/redux/slices/globalSlice";
+import Header from "./Layout-components/Header";
+import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
+import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
+import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 
 interface LayoutType {
   children?: ReactNode;
@@ -104,7 +101,7 @@ export default function Layout({
       navbar = [
         {
           heading: "Home",
-          href: "",
+          href: "/",
         },
         {
           heading: "blog",
@@ -120,7 +117,7 @@ export default function Layout({
   return (
     <ReactLenis root>
       <div className={`m-0`} onContextMenu={handleContextMenu}>
-        <Header navbar={homeNavbar} />
+        <Header navbar={homeNavbar} page={page} />
         {withLoader ? <LayoutLoader loading={isLoading} /> : null}
         <main>{children}</main>
         <Footer />

@@ -17,7 +17,7 @@ export default function Footer() {
             }))}
           />
         )}
-        <p className="text-sm font-light">Alinka Harun Dwie Hartanto</p>
+        <p className="text-sm font-light hidden desktop:block">Alinka Harun Dwie Hartanto</p>
       </div>
 
       <div className="flex flex-row gap-2">

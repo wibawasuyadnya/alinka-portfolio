@@ -45,7 +45,7 @@ function AnimationText({ delay, data }: AnimationTextProps) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  return <motion.span className="inline text-xl">{displayText}</motion.span>;
+  return <motion.span className="inline text-base desktop:text-xl">{displayText}</motion.span>;
 }
 
 export default AnimationText;

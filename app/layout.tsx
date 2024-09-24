@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Public_Sans } from "next/font/google";
 import "@/styles/globals.css";
 import { Providers } from "@/redux/provider";
@@ -7,6 +7,11 @@ import ThemeWrapper from "@/components/Layout-components/ThemeWrapper";
 import ThemeInitializer from "@/components/Layout-components/ThemeInitializer";
 
 const public_sans = Public_Sans({ subsets: ["latin"] });
+
+export const viewport: Viewport = {
+  initialScale: 1.0,
+  width: 'device-width'
+}
 
 export const metadata: Metadata = {
   metadataBase: new URL(`https://alinka-portfolio.vercel.app/`),
@@ -22,6 +27,7 @@ export const metadata: Metadata = {
     canonical: "./",
   },
 };
+
 export default function RootLayout({
   children,
 }: Readonly<{

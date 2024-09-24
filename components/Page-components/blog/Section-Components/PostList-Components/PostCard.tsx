@@ -20,16 +20,16 @@ function PostCard({ data }: PostCardProps) {
     >
       <a href={`/blog/${data.slug}`} target="_blank">
         <div className="space-y-3 w-full">
-          <div className="flex flex-row gap-3 w-full">
+          <div className="flex flex-col desktop:flex-row gap-3 w-full">
             <img
               className={ 
-                "w-[150px] h-full rounded-lg border border-solid border-primary"
+                "w-full desktop:w-[150px] h-full rounded-lg border border-solid border-primary"
               }
               src={data.coverImage.url}
             />
             <h3 className={"text-2xl font-playfair w-full"}>{data.title}</h3>
           </div>
-          <div className="flex flex-row justify-start items-center gap-2">
+          <div className="flex flex-col desktop:flex-row justify-center desktop:justify-start item-start desktop:items-center gap-2">
             {data.authors?.map((author, idx) => {
               return (
                 <Fragment key={idx}>

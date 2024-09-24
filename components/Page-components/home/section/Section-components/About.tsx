@@ -10,14 +10,14 @@ function About() {
 
   const aboutData: AboutDataType | null = aboutSection
     ? {
-        description: aboutSection.description,
-        heading: aboutSection.heading,
-        wysiwygEditor: aboutSection.wysiwygEditor,
-        images: {
-          id: aboutSection.images.id,
-          url: aboutSection.images.url,
-        },
-      }
+      description: aboutSection.description,
+      heading: aboutSection.heading,
+      wysiwygEditor: aboutSection.wysiwygEditor,
+      images: {
+        id: aboutSection.images.id,
+        url: aboutSection.images.url,
+      },
+    }
     : null;
 
   const htmlString = `${aboutData?.wysiwygEditor.html}`;
@@ -38,8 +38,8 @@ function About() {
       <div className="flex flex-col justify-center items-center min-w-full min-h-fit py-5 px-5">
         <div className="w-full h-full">
           {aboutData && (
-            <div className="grid grid-cols-2 gap-4">
-              <div className="w-8/12 mx-auto">
+            <div className="desktop:grid desktop:grid-cols-2 flex flex-col gap-5 desktop:gap-4">
+              <div className="desktop:w-8/12 w-full mx-auto">
                 <Image
                   src={aboutData.images.url}
                   width={0}
@@ -49,7 +49,7 @@ function About() {
                   alt="image data"
                 />
               </div>
-              <div className="w-5/6">
+              <div className="desktop:w-5/6">
                 <div className="flex flex-col justify-center items-center gap-8">
                   <HtmlContent html={htmlString} targets={targets} />
                 </div>

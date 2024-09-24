@@ -127,7 +127,7 @@ export type NavigationHeader = {
 // dynamic header data types
 export type DynamicHeaderType = {
   show?: boolean;
-  onClick: () => void;
+  onClick?: () => void;
   type?: string;
   navbar?: {
     href: string;

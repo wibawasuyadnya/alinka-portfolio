@@ -31,11 +31,11 @@ function Contact() {
 
   const targets: TargetElement[] = [
     { tag: "h2", className: "text-3xl font-semibold " },
-    { tag: "p", className: "text-xl font-normal" },
+    { tag: "p", className: "text-lg desktop:text-xl font-normal" },
   ];
 
   return (
-    <div className={"py-16 px-10 bg-base-100 space-y-2"}>
+    <div className={"py-16 px-5 desktop:px-10 bg-base-100 space-y-2"}>
       <h2
         className={
           "mb-24 text-primary-content text-center font-regular text-5xl font-playfair"
@@ -45,22 +45,22 @@ function Contact() {
       </h2>
       <HtmlContent
         attribute={{
-          className: "flex flex-col justify-center items-center gap-5",
+          className: "flex flex-col justify-center items-start desktop:justify-center desktop:items-center gap-5",
         }}
         html={htmlString}
         targets={targets}
       />
       <div className="w-full flex flex-col justify-center items-center">
-        <div className="w-2/4 flex flex-row gap-2 items-center justify-center">
+        <div className="w-full desktop:w-2/4 flex flex-col desktop:flex-row gap-2 items-center justify-center">
           <input
             value={message}
             onChange={handleInputChange}
             placeholder="Type something here..."
-            className="input input-bordered w-full max-w-xs"
+            className="input input-bordered w-full desktop:max-w-xs"
           />
           <button
             onClick={handleSendMessage}
-            className="button capitalize px-5 py-3 text-base bg-primary text-white rounded-md font-sans cursor-pointer w-2/6"
+            className="button capitalize px-5 py-3 text-base bg-primary text-white rounded-md font-sans cursor-pointer w-full desktop:w-2/6"
           >
             send
           </button>
