@@ -8,7 +8,7 @@ const ScrollProgress = ({ count }: { count: number }) => {
   const scrollProgress = useScrollProgress();
   const filledDashes = Math.round((scrollProgress / 110) * dashCount);
   return (
-    <div className="fixed flex flex-col justify-center gap-3 w-6 h-screen top-0 right-8">
+    <div className="fixed flex flex-col justify-center gap-3 w-6 h-screen top-0 right-3 desktop:right-8">
       {Array.from({ length: dashCount }).map((_, index) => (
         <div
           key={index}

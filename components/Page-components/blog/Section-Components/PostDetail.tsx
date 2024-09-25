@@ -36,8 +36,8 @@ function PostDetail({ params, language }: Props) {
     return hasMultiplePosts
       ? posts[(currentIndex + 1) % posts.length].slug
       : language !== "id"
-      ? "No Next Post"
-      : "Tidak Terdapat Post Berikutnya";
+        ? "No Next Post"
+        : "Tidak Terdapat Post Berikutnya";
   };
 
   const getPreviousPostSlug = () => {
@@ -45,8 +45,8 @@ function PostDetail({ params, language }: Props) {
     return hasMultiplePosts
       ? posts[(currentIndex - 1 + posts.length) % posts.length].slug
       : language !== "id"
-      ? "No Previous Post"
-      : "Tidak Terdapat Post Sebelumnya";
+        ? "No Previous Post"
+        : "Tidak Terdapat Post Sebelumnya";
   };
 
   const nextPostSlug = getNextPostSlug();
@@ -65,32 +65,31 @@ function PostDetail({ params, language }: Props) {
           backgroundBlendMode: "overlay",
         }}
       ></div>
-      <div className="w-full h-fit relative px-72 space-y-4">
-        <div className="flex flex-row justify-start items-center gap-4">
+      <div className="w-full h-fit relative px-3 desktop:px-72 space-y-4">
+        <div className="flex desktop:flex-row desktop:justify-start desktop:items-center gap-3 desktop:gap-4 w-fit">
           {post.authors?.map((author, idx) => {
             return (
               <Fragment key={idx}>
-                <div className="avatar mt-[-50px]">
+                <div className="avatar mt-[-50px] w-full">
                   <div className="bg-neutral w-24 rounded-full border-[4px] border-solid border-primary">
                     <img src={author.picture.url} />
                   </div>
                 </div>
-                <div className="pt-2 space-y-1">
-                  <div className="flex flex-row justify-start items-center gap-1">
+                <div className="pt-2 space-y-1 w-full">
+                  <div className="flex flex-row -start items-center gap-1">
                     <h5 className="text-sm font-semibold capitalize">
                       {author.name}
                     </h5>
                     <div
-                      className={`h-2 w-2 ${
-                        post.createdBy?.isActive
+                      className={`h-2 w-2 ${post.createdBy?.isActive
                           ? "bg-green-500"
                           : "bg-slate-500"
-                      } rounded-full`}
+                        } rounded-full`}
                     ></div>
                   </div>
                   <h6
                     data-tip={author.intro}
-                    className="tooltip tooltip-right text-xs font-light"
+                    className="desktop:tooltip desktop:tooltip-right text-xs font-light"
                   >
                     {author.bio}
                   </h6>
@@ -105,7 +104,7 @@ function PostDetail({ params, language }: Props) {
           separator={<span> {">"} </span>}
           activeClasses="font-semibold tracking-wide"
           containerClasses="flex gap-2"
-          listClasses="text-base hover:underline m-0 font-normal"
+          listClasses="text-normal desktop:text-base hover:underline m-0 font-normal"
         />
         <div>
           <h1 className="text-3xl  font-playfair font-bold">{post.title}</h1>
@@ -168,9 +167,8 @@ function PostDetail({ params, language }: Props) {
             onClick={() => {
               hasMultiplePosts ?? router.push(`/blog/${previousPostSlug}`);
             }}
-            className={`${
-              hasMultiplePosts ? "opacity-100" : "opacity-50"
-            } cursor-pointer flex flex-row justify-start items-center gap-2`}
+            className={`${hasMultiplePosts ? "opacity-100" : "opacity-50"
+              } cursor-pointer flex flex-row justify-start items-center gap-2`}
           >
             <ArrowLeft />
             <h5>{previousPostSlug}</h5>
@@ -179,9 +177,8 @@ function PostDetail({ params, language }: Props) {
             onClick={() => {
               hasMultiplePosts ?? router.push(`/blog/${nextPostSlug}`);
             }}
-            className={`${
-              hasMultiplePosts ? "opacity-100" : "opacity-50"
-            } cursor-pointer flex flex-row justify-start items-center gap-2`}
+            className={`${hasMultiplePosts ? "opacity-100" : "opacity-50"
+              } cursor-pointer flex flex-row justify-start items-center gap-2`}
           >
             <h5>{nextPostSlug}</h5>
             <ArrowRight />
