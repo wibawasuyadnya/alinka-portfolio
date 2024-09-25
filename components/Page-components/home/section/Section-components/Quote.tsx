@@ -22,7 +22,7 @@ function Quotation() {
       tag: "a",
       href: "#latest-post",
       className:
-        "px-5 py-3 text-base bg-primary text-white rounded-md z-10 font-sans cursor-pointer",
+        "px-5 py-3 text-base bg-primary text-white rounded-md font-sans cursor-pointer",
     },
     { tag: "em", className: "desktop:text-3xl text-2xl font-normal w-[300px] desktop:w-full text-center" },
     { tag: "p", className: "desktop:text-2xl text-xl font-playfair flex flex-col justify-center items-center desktop:block" },

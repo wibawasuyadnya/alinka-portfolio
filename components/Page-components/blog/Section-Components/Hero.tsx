@@ -49,8 +49,8 @@ export default function Hero({
         dangerouslySetInnerHTML={{
           __html: `
                   <h2 class="font-playfair font-normal">My Blog</h2> 
-                  <h1 class="text-6xl font-playfair font-normal tracking-wide text-primary-content">${language === "en" ? '<b>Art</b> & <b>Stories</b>' : '<b>Seni</b> & <b>Cerita</b>'}</h1>
-                  <p class="mt-4 text-lg text-primary-content text-center">${language === "en"
+                  <h1 class="text-5xl desktop:text-6xl font-playfair font-normal tracking-wide text-primary-content">${language === "en" ? '<b>Art</b> & <b>Stories</b>' : '<b>Seni</b> & <b>Cerita</b>'}</h1>
+                  <p class="mt-4 text-md desktop:text-lg text-primary-content text-center">${language === "en"
               ? 'Discover my journey through art and stories.'
               : 'Temukan perjalanan saya melalui seni dan cerita.'}</p>
         `}}

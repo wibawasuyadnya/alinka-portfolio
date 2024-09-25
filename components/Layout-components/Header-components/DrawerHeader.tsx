@@ -75,10 +75,10 @@ export default function DrawerHeader({ type, navbar }: DynamicHeaderType) {
                         >
                             {/* Close button */}
                             <button
-                                className="absolute top-4 right-4 btn btn-error rounded-full w-fit p-3"
+                                className="absolute top-4 right-4 btn btn-primary rounded-full w-fit p-3"
                                 onClick={() => toggleDrawer(false)}
                             >
-                                <X />
+                                <X className="stroke-white" />
                             </button>
 
                             {/* Navigation items */}

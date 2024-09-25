@@ -37,7 +37,7 @@ const BottomNavigationBar = () => {
     return (
         <Fragment>
             <motion.div
-                className={`fixed bottom-0 w-full h-[100px] z-50 bg-[#202237] text-white rounded-tl-xl rounded-tr-xl border-2 border-solid border-[#262840]`}
+                className={`fixed bottom-0 w-full h-[100px] z-[9] bg-[#202237] text-white rounded-tl-xl rounded-tr-xl border-2 border-solid border-[#262840]`}
                 initial={{ y: "90px" }}
                 animate={{ y: isVisible ? "90px" : "0%" }}
                 transition={{ type: "spring", stiffness: 100 }}
