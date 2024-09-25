@@ -53,7 +53,7 @@ const BottomNavigationBar = () => {
                     </a>
 
                     {/* Navigation Links */}
-                    <a href="/blog" className={`${pathName === "blog" && 'border-solid border-b-4 border-primary'} pb-4`}>
+                    <a href="/blog" className={`${pathName === "/blog" && 'border-solid border-b-4 border-primary'} pb-4`}>
                         <BookText className="w-7 h-7" />
                     </a>
 
