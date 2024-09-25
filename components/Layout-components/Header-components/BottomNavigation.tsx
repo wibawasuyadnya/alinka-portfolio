@@ -1,14 +1,12 @@
 "use client";
 import React, { useState, useEffect, Fragment } from "react";
-import Link from "next/link";
 import ThemeToggleIcon from "./ThemeToggleIcon";
-import LanguageToggleIcon from "./LanguageToggleIcon";
-import { DynamicHeaderType } from "@/types/type";
 import { motion } from "framer-motion";
-import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollToView";
-import { Pointer } from "lucide-react";
+import { BookText, Home, Pointer } from "lucide-react";
+import { usePathname } from 'next/navigation'
 
-const BottomNavigationBar = ({ type, navbar }: DynamicHeaderType) => {
+const BottomNavigationBar = () => {
+    const pathName = usePathname();
     const [isVisible, setIsVisible] = useState<boolean>(true);
     const [lastScrollY, setLastScrollY] = useState<number>(0);
 
@@ -39,31 +37,37 @@ const BottomNavigationBar = ({ type, navbar }: DynamicHeaderType) => {
     return (
         <Fragment>
             <motion.div
-                className={`fixed bottom-0 w-full h-[60px] z-50 bg-primary text-white rounded-tl-xl rounded-tr-xl`}
-                initial={{ y: "65px" }}
-                animate={{ y: isVisible ? "65px" : "0%" }}
+                className={`fixed bottom-0 w-full h-[100px] z-50 bg-[#202237] text-white rounded-tl-xl rounded-tr-xl border-2 border-solid border-[#262840]`}
+                initial={{ y: "90px" }}
+                animate={{ y: isVisible ? "90px" : "0%" }}
                 transition={{ type: "spring", stiffness: 100 }}
             >
                 <div
                     className={
-                        "w-3/4 mx-auto rounded-t-2xl bg-primary desktop:w-5/6 desktop:grid flex flex-row justify-between items-start desktop:grid-cols-5 gap-4 desktop:place-items-center px-5 pt-[18px]"
+                        "w-3/4 mx-auto rounded-t-2xl desktop:w-5/6 desktop:grid flex flex-row justify-between items-start desktop:grid-cols-5 gap-4 desktop:place-items-center p-4"
                     }
                 >
+                    {/* Navigation Links */}
+                    <a href="/" className={`${pathName === "/" && 'border-solid border-b-4 border-primary'} pb-4`}>
+                        <Home className="w-7 h-7" />
+                    </a>
+
+                    {/* Navigation Links */}
+                    <a href="/blog" className={`${pathName === "blog" && 'border-solid border-b-4 border-primary'} pb-4`}>
+                        <BookText className="w-7 h-7" />
+                    </a>
+
                     {/* Theme and Language Toggles */}
                     <div>
                         <ThemeToggleIcon />
                     </div>
 
-                    {/* Navigation Links */}
-                    <div className="mt-[-30px] rounded-full bg-primary p-1">
-                        <LanguageToggleIcon />
-                    </div>
-
                     {/* Up scroll toggles */}
                     <div onClick={scrollToTop}>
-                        <Pointer />
+                        <Pointer className="w-7 h-7" />
                     </div>
                 </div>
+                <div className="h-1 w-1/4 bg-[#FBFBFB] opacity-30 rounded-full mx-auto" />
             </motion.div>
         </Fragment>
     );

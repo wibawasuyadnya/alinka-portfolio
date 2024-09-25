@@ -41,9 +41,9 @@ const StaticHeader = ({ type, onClick, navbar }: DynamicHeaderType) => {
             })}
         </nav>
         <div className="flex flex-row gap-2 desktop:gap-3">
-          <ThemeToggleIcon />
+          <div className="hidden desktop:block"><ThemeToggleIcon /></div>
           <div className="divider hidden desktop:flex desktop:divider-horizontal" />
-          <div className="hidden desktop:block"><LanguageToggleIcon /></div>
+          <LanguageToggleIcon />
         </div>
       </div>
     </div>
