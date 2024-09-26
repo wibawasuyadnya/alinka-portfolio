@@ -12,9 +12,7 @@ export default function DynamicHeader({
 }: DynamicHeaderType) {
   return (
     <Fragment>
-      <div className="hidden desktop:block">
-        <StickyHeader type={type} show={show} onClick={onClick} navbar={navbar} />
-      </div>
+      <StickyHeader type={type} show={show} onClick={onClick} navbar={navbar} />
       <StaticHeader type={type} onClick={onClick} navbar={navbar} />
       <div className="block desktop:hidden">
         <BottomNavigationBar />

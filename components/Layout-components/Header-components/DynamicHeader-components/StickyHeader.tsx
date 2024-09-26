@@ -10,7 +10,7 @@ import { handleClickSmoothScrollToView } from "@/utils/handleClickSmoothScrollTo
 const StickyHeader = ({ type, show, navbar, onClick }: DynamicHeaderType) => {
   return (
     <motion.div
-      className={`top-0 navbar sticky z-50 text-white h-fit mt-[-100px]`}
+      className={`top-0 navbar sticky z-50 text-white h-fit mt-[-100px] hidden desktop:flex`}
       initial={{ y: "-200px" }}
       animate={{ y: show ? `0` : "-200px" }}
       transition={{ type: "spring", stiffness: 100 }}
