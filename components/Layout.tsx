@@ -95,7 +95,12 @@ export default function Layout({
       ];
     }
     if (type === "art") {
-      navbar = [];
+      navbar = [
+        {
+          heading: "Home",
+          href: "/",
+        },
+      ];
     }
     if (type === "blog") {
       navbar = [

@@ -51,16 +51,12 @@ export default function Slider({ data }: SliderItemType) {
               <SwiperSlide key={idx} className="m-0">
                 <div className="flex flex-row justify-center items-center">
                   <Image
+                    className="w-full h-[500px] desktop:h-screen object-cover object-center"
                     src={slider.image.url}
                     alt={`Banner ${slider.name}`}
                     sizes="100vw"
                     width={0}
                     height={0}
-                    style={{
-                      width: "100%",
-                      height: "101vh",
-                      objectFit: "cover",
-                    }}
                   />
                 </div>
               </SwiperSlide>

@@ -36,7 +36,7 @@ export default function PostsList({ data, length, search }: PostsListPropsType) 
     </div>
   ) : (
     <div className="gap-5 min-h-[300px] w-full flex flex-col justify-center items-center">
-      <Origami className="w-1/5 h-full stroke-primary" />
+      <Origami className=" w-2/4 desktop:w-1/5 h-full stroke-primary" />
       <div
         dangerouslySetInnerHTML={{
           __html: `<h4 class="font-regular text-xl text-center text-primary-content">

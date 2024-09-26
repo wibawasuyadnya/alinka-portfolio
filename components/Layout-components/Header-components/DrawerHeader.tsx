@@ -90,12 +90,12 @@ export default function DrawerHeader({ type, navbar }: DynamicHeaderType) {
                                                 <Link
                                                     href={item.href}
                                                     onClick={(e) => handleNavClick(e, item.href)}
-                                                    className="text-4xl font-playfair text-left font-semibold"
+                                                    className="text-4xl font-playfair text-left font-semibold capitalize"
                                                 >
                                                     {item.heading}
                                                 </Link>
                                             ) : (
-                                                <Link href={item.href}>{item.heading}</Link>
+                                                <Link className="text-4xl font-playfair text-left font-semibold capitalize" href={item.href}>{item.heading}</Link>
                                             )}
                                         </div>
                                     ))}

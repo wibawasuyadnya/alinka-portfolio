@@ -30,15 +30,15 @@ export default function ContainerArtDetail({
   const handle = useFullScreenHandle();
 
   return (
-    <div className="p-[20px] w-full h-full flex flex-row justify-center items-center">
-      <div className="relative w-3/4 h-full rounded-xl bg-base-300 flex flex-row gap-3 shadow-[0_0px_30px_1px_rgba(0,0,0,0.18)]">
+    <div className="px-[10px] desktop:p-[20px] w-full h-fit desktop:h-full flex flex-row justify-center items-center">
+      <div className="relative desktop:w-3/4 w-11/12 h-full rounded-xl bg-base-300 flex flex-col desktop:flex-row gap-3 shadow-[0_0px_30px_1px_rgba(0,0,0,0.18)]">
         <div className="w-full h-auto relative p-4">
           <ImageFullScreen
             handle={handle}
             image={artDetail.art.image}
             name={artDetail.art.name}
           />
-          <button onClick={handle.enter} className="absolute top-6 right-6">
+          <button onClick={handle.enter} className="absolute bottom-6 desktop:bottom-auto desktop:top-6 right-6">
             <Fullscreen
               className={"stroke-primary/50 w-8 h-8 hover:stroke-primary/100"}
             />
@@ -51,8 +51,8 @@ export default function ContainerArtDetail({
           <CircleX className="stroke-red-400 w-8 h-8 rounded-full" />
         </Link>
 
-        <div className="w-full flex flex-col justify-center items-stretch gap-5 p-4">
-          <p className={"text-sm font-normal absolute top-2"}>
+        <div className="relative w-full flex flex-col justify-center items-stretch gap-5 p-4">
+          <p className={"text-sm font-normal desktop:absolute top-2"}>
             Release Date: <b>{date}</b>
           </p>
           <div>

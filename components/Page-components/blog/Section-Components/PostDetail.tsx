@@ -1,13 +1,14 @@
 "use client";
+import Image from "next/image";
 import { Fragment } from "react";
 import { Language } from "@/types/enum";
+import { useRouter } from "next/navigation";
 import { formatDate } from "@/utils/formatDate";
 import { List, CalendarDays } from "lucide-react";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { usePostsData } from "@/hooks/data/usePostsData";
 import Breadcrumb from "@/components/Layout-components/Breadcrumb";
 import { usePostDetailData } from "@/hooks/data/usePostDetailData";
-import { useRouter } from "next/navigation";
 
 interface Props {
   params?: {
@@ -55,16 +56,11 @@ function PostDetail({ params, language }: Props) {
   return (
     <div className="w-full h-full pb-[50px]">
       <div
-        className={"h-[400px] w-full"}
+        className={"h-[350px] desktop:h-[400px] w-full bg-cover bg-no-repeat bg-center bg-fixed bg-blend-overlay"}
         style={{
           backgroundImage: `url(${post.coverImage.url})`,
-          backgroundSize: "cover",
-          backgroundRepeat: "no-repeat",
-          backgroundPosition: "center",
-          backgroundAttachment: "fixed",
-          backgroundBlendMode: "overlay",
         }}
-      ></div>
+      />
       <div className="w-full h-fit relative px-3 desktop:px-72 space-y-4">
         <div className="flex desktop:flex-row desktop:justify-start desktop:items-center gap-3 desktop:gap-4 w-fit">
           {post.authors?.map((author, idx) => {
@@ -72,7 +68,7 @@ function PostDetail({ params, language }: Props) {
               <Fragment key={idx}>
                 <div className="avatar mt-[-50px] w-full">
                   <div className="bg-neutral w-24 rounded-full border-[4px] border-solid border-primary">
-                    <img src={author.picture.url} />
+                    <Image src={author.picture.url} width={0} height={0} alt={`${author.name} Picture`} sizes="100vw" />
                   </div>
                 </div>
                 <div className="pt-2 space-y-1 w-full">
@@ -82,8 +78,8 @@ function PostDetail({ params, language }: Props) {
                     </h5>
                     <div
                       className={`h-2 w-2 ${post.createdBy?.isActive
-                          ? "bg-green-500"
-                          : "bg-slate-500"
+                        ? "bg-green-500"
+                        : "bg-slate-500"
                         } rounded-full`}
                     ></div>
                   </div>
@@ -103,13 +99,13 @@ function PostDetail({ params, language }: Props) {
           homeElement={"Home"}
           separator={<span> {">"} </span>}
           activeClasses="font-semibold tracking-wide"
-          containerClasses="flex gap-2"
-          listClasses="text-normal desktop:text-base hover:underline m-0 font-normal"
+          containerClasses="flex gap-2 flex-row flex-wrap"
+          listClasses="text-base hover:underline m-0 font-normal"
         />
         <div>
           <h1 className="text-3xl  font-playfair font-bold">{post.title}</h1>
         </div>
-        <table className="table w-1/3">
+        <table className="table desktop:w-1/3">
           <tbody>
             <tr className="border-none">
               <td className="px-0">

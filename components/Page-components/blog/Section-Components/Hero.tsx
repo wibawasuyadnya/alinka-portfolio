@@ -56,7 +56,7 @@ export default function Hero({
         `}}
       />
       <div className="px-10 flex-row flex justify-end items-center gap-5">
-        <div onClick={toggleDropdown} className={`dropdown dropdown-bottom dropdown-end ${isDropdownOpen ? 'dropdown-open' : ''}`}>
+        <div onClick={toggleDropdown} className={`dropdown dropdown-bottom desktop:dropdown-end ${isDropdownOpen ? 'dropdown-open' : ''}`}>
           <div tabIndex={0} role="button" className="capitalize btn px-[10px] py-[8px] text-sm font-md bg-transparent border border-solid border-neutral text-neutral hover:text-white hover:border-neutral hover:bg-neutral">
             {selectedTags.length > 0 ? selectedTags : "Tags"}
           </div>

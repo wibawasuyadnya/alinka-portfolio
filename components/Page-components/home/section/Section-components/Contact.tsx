@@ -10,22 +10,28 @@ function Contact() {
 
   const contactData: ContactDataType | null = contactSection
     ? {
-        heading: contactSection.heading,
-        description: contactSection.description,
-        wysiwygEditor: contactSection.wysiwygEditor,
-      }
+      heading: contactSection.heading,
+      description: contactSection.description,
+      wysiwygEditor: contactSection.wysiwygEditor,
+    }
     : null;
 
   const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setMessage(event.target.value);
   };
 
-  const handleSendMessage = () => {
-    const whatsappUrl = `https://wa.me/+6289510390087?text=${encodeURIComponent(
-      message
-    )}`;
+  const handleSendMessage = async () => {
+    const timestamp = new Date().toLocaleString();
+    const ipResponse = await fetch('https://api.ipify.org?format=json');
+    const ipData = await ipResponse.json();
+    const ipAddress = ipData.ip;
+    const formattedMessage = `* Timestamp: ${timestamp}
+    * IP Address: ${ipAddress}
+    * Message: ${message}`;
+    const whatsappUrl = `https://wa.me/+6282245524955?text=${encodeURIComponent(formattedMessage)}`;
     window.open(whatsappUrl, "_blank");
   };
+
 
   const htmlString = `${contactData?.wysiwygEditor.html}`;
 
