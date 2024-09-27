@@ -24,7 +24,7 @@ function Posts() {
       >
         {postData && postData.heading}
       </h2>
-      <PostsList data={posts} />
+      <PostsList data={posts} length={3}/>
       <div className="pt-3 w-full">
         <a href="/blog">
           <div className="rounded-md bg-primary px-3 py-2 w-fit mx-auto"><h5 className="text-lg font-bold text-white">Explore Blog</h5>

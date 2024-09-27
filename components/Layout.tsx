@@ -111,7 +111,7 @@ export default function Layout({
           href: "/",
         },
         {
-          heading: "blog",
+          heading: "Blog",
           href: "/blog",
         },
       ];
