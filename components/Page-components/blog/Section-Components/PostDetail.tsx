@@ -30,25 +30,37 @@ function PostDetail({ params, language }: Props) {
 
   const markdownContent = markdownToHtml(post.content);
 
-  const hasMultiplePosts = posts.length > 1;
-
   const getNextPostSlug = () => {
-    const currentIndex = posts.findIndex((p) => p.slug === slug);
-    return hasMultiplePosts
-      ? posts[(currentIndex + 1) % posts.length].slug
-      : language !== "id"
-        ? "No Next Post"
-        : "Tidak Terdapat Post Berikutnya";
+    const currentIndex = posts?.findIndex((p) => p.slug === slug);
+    // Check if there is a next post (currentIndex + 1 is within bounds)
+    if (currentIndex < posts.length - 1) {
+      return {
+        slug: posts[currentIndex + 1].slug,
+        title: posts[currentIndex + 1].title
+      };
+    } else {
+      return {
+        title: language !== "id" ? "No Next Post" : "Tidak Terdapat Post Berikutnya",
+        slug: null
+      };
+    }
   };
 
-  const getPreviousPostSlug = () => {
-    const currentIndex = posts.findIndex((p) => p.slug === slug);
-    return hasMultiplePosts
-      ? posts[(currentIndex - 1 + posts.length) % posts.length].slug
-      : language !== "id"
-        ? "No Previous Post"
-        : "Tidak Terdapat Post Sebelumnya";
-  };
+const getPreviousPostSlug = () => {
+  const currentIndex = posts?.findIndex((p) => p.slug === slug);
+
+  if (currentIndex > 0) {
+    return {
+      slug: posts[currentIndex - 1].slug,
+      title: posts[currentIndex - 1].title
+    };
+  } else {
+    return {
+      title: language !== "id" ? "No Previous Post" : "Tidak Terdapat Post Sebelumnya",
+      slug: null
+    };
+  }
+};
 
   const nextPostSlug = getNextPostSlug();
   const previousPostSlug = getPreviousPostSlug();
@@ -66,13 +78,13 @@ function PostDetail({ params, language }: Props) {
           {post.authors?.map((author, idx) => {
             return (
               <Fragment key={idx}>
-                <div className="avatar mt-[-50px] w-full">
+                <div className="avatar mt-[-50px] w-fit">
                   <div className="bg-neutral w-24 rounded-full border-[4px] border-solid border-primary">
                     <Image src={author.picture.url} width={0} height={0} alt={`${author.name} Picture`} sizes="100vw" />
                   </div>
                 </div>
                 <div className="pt-2 space-y-1 w-full">
-                  <div className="flex flex-row -start items-center gap-1">
+                  <div className="flex flex-row justify-start items-center gap-1">
                     <h5 className="text-sm font-semibold capitalize">
                       {author.name}
                     </h5>
@@ -85,7 +97,7 @@ function PostDetail({ params, language }: Props) {
                   </div>
                   <h6
                     data-tip={author.intro}
-                    className="desktop:tooltip desktop:tooltip-right text-xs font-light"
+                    className="desktop:tooltip desktop:tooltip-right text-xs font-light !text-start"
                   >
                     {author.bio}
                   </h6>
@@ -105,7 +117,7 @@ function PostDetail({ params, language }: Props) {
         <div>
           <h1 className="text-3xl  font-playfair font-bold">{post.title}</h1>
         </div>
-        <table className="table desktop:w-1/3">
+        <table className="table desktop:w-2/5">
           <tbody>
             <tr className="border-none">
               <td className="px-0">
@@ -114,7 +126,7 @@ function PostDetail({ params, language }: Props) {
                   <h3 className="text-sm font-normal">Tags : </h3>
                 </div>
               </td>
-              <td>
+              <td className="flex flex-row gap-2">
                 {post.tags.map((tag, idx) => {
                   return (
                     <div
@@ -159,27 +171,39 @@ function PostDetail({ params, language }: Props) {
         <div className="divider"></div>
 
         <div className="flex py-10 flex-row justify-between items-center">
+          {/* Previous Post */}
           <div
             onClick={() => {
-              hasMultiplePosts ?? router.push(`/blog/${previousPostSlug}`);
+              if (previousPostSlug.title !== "No Previous Post" && previousPostSlug.title !== "Tidak Terdapat Post Sebelumnya") {
+                router.push(`/blog/${previousPostSlug.slug}`);
+              }
             }}
-            className={`${hasMultiplePosts ? "opacity-100" : "opacity-50"
-              } cursor-pointer flex flex-row justify-start items-center gap-2`}
+            className={`${previousPostSlug.title !== "No Previous Post" && previousPostSlug.title !== "Tidak Terdapat Post Sebelumnya"
+              ? "opacity-100 cursor-pointer"
+              : "opacity-50 cursor-default"
+              } flex flex-row justify-start items-center gap-2`}
           >
             <ArrowLeft />
-            <h5>{previousPostSlug}</h5>
+            <h5>{previousPostSlug.title}</h5>
           </div>
+
+          {/* Next Post */}
           <div
             onClick={() => {
-              hasMultiplePosts ?? router.push(`/blog/${nextPostSlug}`);
+              if (nextPostSlug.title !== "No Next Post" && nextPostSlug.title !== "Tidak Terdapat Post Berikutnya") {
+                router.push(`/blog/${nextPostSlug.slug}`);
+              }
             }}
-            className={`${hasMultiplePosts ? "opacity-100" : "opacity-50"
-              } cursor-pointer flex flex-row justify-start items-center gap-2`}
+            className={`${nextPostSlug.title !== "No Next Post" && nextPostSlug.title !== "Tidak Terdapat Post Berikutnya"
+              ? "opacity-100 cursor-pointer"
+              : "opacity-50 cursor-default"
+              } flex flex-row justify-start items-center gap-2`}
           >
-            <h5>{nextPostSlug}</h5>
+            <h5>{nextPostSlug.title}</h5>
             <ArrowRight />
           </div>
         </div>
+
       </div>
     </div>
   );

@@ -10,7 +10,6 @@ import Footer from "./Layout-components/Footer";
 import { NavigationHeader } from "@/types/type";
 import Header from "./Layout-components/Header";
 import { ReactLenis, useLenis } from "@studio-freight/react-lenis";
-import { disableBodyScroll, enableBodyScroll } from "body-scroll-lock";
 import PreloadAnimation from "@/components/Layout-components/Preload/Preload";
 
 interface LayoutType {
@@ -26,8 +25,13 @@ const LayoutLoader = ({ loading }: LoadingType) => {
   if (loading) {
     return (
       <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-50 bg-base-100 w-full h-screen">
-        <div className="flex flex-col w-full h-full items-center justify-center">
-          <PreloadAnimation extraLarge={true} />
+        <div className="flex flex-col w-full h-screen desktop:h-full items-center justify-center">
+          <div className="hidden desktop:block">
+            <PreloadAnimation extraLarge={true} />
+          </div>
+          <div className="block desktop:hidden">
+            <PreloadAnimation large={true} />
+          </div>
         </div>
       </div>
     );
@@ -45,14 +49,13 @@ export default function Layout({
   // lenis scroll
   const lenis = useLenis();
   const toggleScrollLock = () => {
-    const targetElement = document.body;
     if (lenis) {
       if (isLoading) {
         lenis.stop();
-        disableBodyScroll(targetElement);
+        document.body.style.overflow = "hidden";
       } else {
         lenis.start();
-        enableBodyScroll(targetElement);
+        document.body.style.overflow = "";
       }
     }
   };
@@ -60,9 +63,8 @@ export default function Layout({
   useEffect(() => {
     toggleScrollLock();
     return () => {
-      if (lenis) {
-        lenis.start();
-      }
+      lenis?.start();
+      document.body.style.overflow = "";
     };
   }, [isLoading, lenis]);
 
