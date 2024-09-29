@@ -29,7 +29,7 @@ export default function PostsList({ data, length, search }: PostsListPropsType) 
         className="my-masonry-grid"
         columnClassName="my-masonry-grid_column space-y-5"
       >
-        {postsToDisplay.map((post) => {
+        {postsToDisplay.map((post) => { 
           return <PostCard key={post.id} data={post} />;
         })}
       </Masonry>
