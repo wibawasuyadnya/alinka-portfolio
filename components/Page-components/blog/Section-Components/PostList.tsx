@@ -27,7 +27,7 @@ export default function PostsList({ data, length, search }: PostsListPropsType) 
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
-        columnClassName="my-masonry-grid_column"
+        columnClassName="my-masonry-grid_column space-y-5"
       >
         {postsToDisplay.map((post) => {
           return <PostCard key={post.id} data={post} />;
