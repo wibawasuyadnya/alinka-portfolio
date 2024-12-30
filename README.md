@@ -1,7 +1,7 @@
 
-# Alinka Personal WebApp Portfolio ( Desktop & Mobile )
+# Nadine Putri Personal WebApp Portfolio ( Desktop & Mobile )
 
-This portfolio website showcases the work of Alinka, a renowned artist and painter from Surabaya, Indonesia, known for her realism art. The website is built using TypeScript and Next.js with an app router, following the atomic design structure to ensure a scalable and maintainable codebase.
+The website is built using TypeScript and Next.js with an app router, following the atomic design structure to ensure a scalable and maintainable codebase.
 
 ## Tech Stack
 
